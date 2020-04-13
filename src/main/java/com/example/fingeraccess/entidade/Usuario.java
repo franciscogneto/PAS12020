@@ -2,16 +2,19 @@ package com.example.fingeraccess.entidade;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 /**
  * Usuario INSERT INTO USUARIO VALUES(0,  '15991247823', 'Sorocaba', '48999603873',  '2000-06-08', 'vinicius.souzacss@gmail.com', 'Rua Pedro Alvares Cabral, n.522',  'VINÍCIUS', '33885098')
  */
 
 @Entity
+@Table(name="Usuario")
 public class Usuario implements Serializable{
 
     /**
@@ -21,14 +24,31 @@ public class Usuario implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="ID", nullable=false, unique=true)
     private int id;
+
+    @Column(name="nome", nullable=false, unique=false)
     private String nome;
+
+    @Column(name="cpf", nullable=false, unique=false)
     private String cpf;
+
+    @Column(name="datanasc", nullable=false, unique=false)
     private String datanasc;
+
+    @Column(name="cidade", nullable=false, unique=false)
     private String cidade;
+
+    @Column(name="endereco", nullable=false, unique=false)
     private String endereco;
+
+    @Column(name="email", nullable=false, unique=false)
     private String email;
+
+    @Column(name="telefone", nullable=false, unique=false)
     private String telefone;
+
+    @Column(name="celular", nullable=false, unique=false)
     private String celular;
 
     public int getId() {
