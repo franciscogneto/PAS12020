@@ -27,8 +27,11 @@ public class GeralController {
     public ModelAndView getLeitoresBiometricos() {
 
         ModelAndView mv = new ModelAndView("leitoresBiometricosView");
+
         List<LeitorBiometrico> list = service.getLeitoresBiometricos();
+
         mv.addObject("leitores", list);
+
         return mv;
     }
 
@@ -37,6 +40,7 @@ public class GeralController {
     public ModelAndView getUsuarios() {
 
         ModelAndView mv = new ModelAndView("usuariosView");
+        
         List<Usuario> list = service.getUsuarios();
 
         mv.addObject("usuarios", list);

@@ -14,9 +14,12 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class GeralService {
+
     @Autowired
     private MasterRepository masterRepository;
+    @Autowired
     private LeitorBiometricoRepository leitorRepository;
+    @Autowired
     private UsuarioRepository usuarioRepository;
 
     // -------------------- Usuário ----------------------------------------
