@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leitores Biometricos View</title>
+</head>
+<body>
+    <h1>Leitores Biometricos</h1>
+
+    <!-- IF THERE ARE BIOMETRIC READER IN REPOSITORY-->
+    <div th:unless="${#lists.isEmpty(leitores)}">
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>LOCAL</th>
+                <th>CAPACIDADE</th>
+                <th>FABRICANTE</th>
+            </tr>
+            <tr th:each="leitor: ${leitores}">
+                <td th:text="${leitor.id}">
+                <td th:text="${leitor.local}">
+                <td th:text="${leitor.capacidade}">
+                <td th:text="${leitor.fabricante}">
+            </tr>
+        </table>
+    </div>
+    <!-- ELSE -->
+    <div th:if="${#lists.isEmpty(leitores)}">
+        <div>WARNING: NO BIOMETRIC READER IN REPOSITORY!</div>
+    </div>   
+</body>
+</html>
