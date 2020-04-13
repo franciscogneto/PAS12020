@@ -2,12 +2,17 @@ package com.example.fingeraccess.entidade;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="Cadastro")
 public class Cadastro implements Serializable{
 
     /**
@@ -17,18 +22,27 @@ public class Cadastro implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="ID", nullable=false, unique=true)
     private long id;
+
     @Id
-    private long idLeitor;
-    private long idUsuario;
+    @ManyToMany
+    @JoinColumn(name="idLeitor", referencedColumnName="ID")
+    private LeitorBiometrico  leitorBiometrico;
+
+    @ManyToMany
+    @JoinColumn(name="idUsuario", referencedColumnName="ID")
+    private Usuario usuario;
+  
+    @Column(name="dataCadastro", nullable=false, unique=false)
     private String dataCadastro;
 
     public Cadastro() {
     }
 
-    public Cadastro(long idLeitor, long idUsuario, String dataCadastro) {
-        this.idLeitor = idLeitor;
-        this.idUsuario = idUsuario;
+    public Cadastro(LeitorBiometrico leitorBiometrico, Usuario usuario, String dataCadastro) {
+        this.leitorBiometrico = leitorBiometrico;
+        this.usuario = usuario;
         this.dataCadastro = dataCadastro;
     }
 
@@ -40,20 +54,20 @@ public class Cadastro implements Serializable{
         this.id = id;
     }
 
-    public long getIdLeitor() {
-        return idLeitor;
+    public LeitorBiometrico getLeitorBiometrico() {
+        return leitorBiometrico;
     }
 
-    public void setIdLeitor(long idLeitor) {
-        this.idLeitor = idLeitor;
+    public void setLeitorBiometrico(LeitorBiometrico leitorBiometrico) {
+        this.leitorBiometrico = leitorBiometrico;
     }
 
-    public long getIdUsuario() {
-        return idUsuario;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setIdUsuario(long idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public String getDataCadastro() {
@@ -66,7 +80,7 @@ public class Cadastro implements Serializable{
 
     @Override
     public String toString() {
-        return "Cadastro [dataCadastro=" + dataCadastro + ", id=" + id + ", idLeitor=" + idLeitor + ", idUsuario="
-                + idUsuario + "]";
+        return "Cadastro [dataCadastro=" + dataCadastro + ", id=" + id + ", leitorBiometrico=" + leitorBiometrico
+                + ", usuario=" + usuario + "]";
     }
 }
