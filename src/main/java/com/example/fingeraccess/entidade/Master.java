@@ -8,7 +8,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Master implements Serializable{
+public class Master implements Serializable {
 
     /**
      *
@@ -21,10 +21,10 @@ public class Master implements Serializable{
     private String usuario;
     private String password;
 
-    public Master(){
+    public Master() {
 
     }
-    
+
     public int getId() {
         return id;
     }
@@ -53,6 +53,5 @@ public class Master implements Serializable{
     public String toString() {
         return "Master [id=" + id + ", password=" + password + ", usuario=" + usuario + "]";
     }
-    
-    
+
 }
