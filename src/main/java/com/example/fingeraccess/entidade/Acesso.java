@@ -2,12 +2,17 @@ package com.example.fingeraccess.entidade;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="Acesso")
 public class Acesso implements Serializable{
 
     /**
@@ -17,19 +22,31 @@ public class Acesso implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="NUM", nullable=false, unique=true)
     private long numAcesso;
-    private long idCadastro;
-    private long idLeitor;
-    private long idUsuario;
+
+    @ManyToMany
+    @JoinColumn(name="idCadastro", referencedColumnName="ID")
+    private Cadastro cadastro;
+
+    @ManyToMany
+    @JoinColumn(name="idLeitor", referencedColumnName="ID")
+    private LeitorBiometrico leitorBiometrico;
+
+    @ManyToMany
+    @JoinColumn(name="idUsuario", referencedColumnName="ID")
+    private Usuario usuario;
+    
+    @Column(name="dataAcesso", nullable=false, unique=false)
     private String dataAcesso;
 
     public Acesso() {
     }
 
-    public Acesso(long idCadastro, long idLeitor, long idUsuario, String dataAcesso) {
-        this.idCadastro = idCadastro;
-        this.idLeitor = idLeitor;
-        this.idUsuario = idUsuario;
+    public Acesso(Cadastro cadastro, LeitorBiometrico leitorBiometrico, Usuario usuario, String dataAcesso) {
+        this.cadastro = cadastro;
+        this.leitorBiometrico = leitorBiometrico;
+        this.usuario = usuario;
         this.dataAcesso = dataAcesso;
     }
 
@@ -41,28 +58,28 @@ public class Acesso implements Serializable{
         this.numAcesso = numAcesso;
     }
 
-    public long getIdCadastro() {
-        return idCadastro;
+    public Cadastro getCadastro() {
+        return cadastro;
     }
 
-    public void setIdCadastro(long idCadastro) {
-        this.idCadastro = idCadastro;
+    public void setCadastro(Cadastro cadastro) {
+        this.cadastro = cadastro;
     }
 
-    public long getIdLeitor() {
-        return idLeitor;
+    public LeitorBiometrico getLeitorBiometrico() {
+        return leitorBiometrico;
     }
 
-    public void setIdLeitor(long idLeitor) {
-        this.idLeitor = idLeitor;
+    public void setLeitorBiometrico(LeitorBiometrico leitorBiometrico) {
+        this.leitorBiometrico = leitorBiometrico;
     }
 
-    public long getIdUsuario() {
-        return idUsuario;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setIdUsuario(long idUsuario) {
-        this.idUsuario = idUsuario;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public String getDataAcesso() {
@@ -75,8 +92,7 @@ public class Acesso implements Serializable{
 
     @Override
     public String toString() {
-        return "Acesso [dataAcesso=" + dataAcesso + ", idCadastro=" + idCadastro + ", idLeitor=" + idLeitor
-                + ", idUsuario=" + idUsuario + ", numAcesso=" + numAcesso + "]";
+        return "Acesso [cadastro=" + cadastro + ", dataAcesso=" + dataAcesso + ", leitorBiometrico=" + leitorBiometrico
+                + ", numAcesso=" + numAcesso + ", usuario=" + usuario + "]";
     }
-
 }
