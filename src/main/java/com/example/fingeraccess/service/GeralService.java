@@ -2,10 +2,13 @@ package com.example.fingeraccess.service;
 
 import java.util.List;
 
+import com.example.fingeraccess.entidade.Acesso;
 import com.example.fingeraccess.entidade.Cadastro;
 import com.example.fingeraccess.entidade.LeitorBiometrico;
 import com.example.fingeraccess.entidade.Master;
 import com.example.fingeraccess.entidade.Usuario;
+import com.example.fingeraccess.repository.AcessoRepository;
+import com.example.fingeraccess.repository.CadastroRepository;
 import com.example.fingeraccess.repository.LeitorBiometricoRepository;
 import com.example.fingeraccess.repository.MasterRepository;
 import com.example.fingeraccess.repository.UsuarioRepository;
@@ -22,6 +25,10 @@ public class GeralService {
     private LeitorBiometricoRepository leitorRepository;
     @Autowired
     private UsuarioRepository usuarioRepository;
+    @Autowired
+    private CadastroRepository cadastroRepository;
+    @Autowired
+    private AcessoRepository acessoRepository;
 
     // -------------------- Usuário ----------------------------------------
     /**
@@ -50,10 +57,21 @@ public class GeralService {
      * Método responsável em retornar todos os cadastros de usuários em leitores biométricos do Banco de Dados
      * 
      * @return Lista de usuários do Banco de Dados
-     
+     */
     public List<Cadastro> getCadastros() {
         return cadastroRepository.findAll();
-    }*/
+    }
+
+    // -------------------- Acesso ------------------------------------------
+
+    /**
+     * Método responsável em retornar todos os cadastros de usuários em leitores biométricos do Banco de Dados
+     * 
+     * @return Lista de usuários do Banco de Dados
+     */
+    public List<Acesso> getAcessos() {
+        return acessoRepository.findAll();
+    }
 
     // ------------------- Master ---------------------------------------------
     /**
