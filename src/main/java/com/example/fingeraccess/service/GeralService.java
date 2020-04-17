@@ -56,7 +56,7 @@ public class GeralService {
     /**
      * Método responsável em retornar todos os cadastros de usuários em leitores biométricos do Banco de Dados
      * 
-     * @return Lista de usuários do Banco de Dados
+     * @return Lista de cadastros de usuários em leitores biométricos do Banco de Dados
      */
     public List<Cadastro> getCadastros() {
         return cadastroRepository.findAll();
@@ -65,9 +65,9 @@ public class GeralService {
     // -------------------- Acesso ------------------------------------------
 
     /**
-     * Método responsável em retornar todos os cadastros de usuários em leitores biométricos do Banco de Dados
+     * Método responsável em retornar todos os acessos de usuários em leitores biométricos do Banco de Dados
      * 
-     * @return Lista de usuários do Banco de Dados
+     * @return Lista de acessos de usuários em leitores biométricos do Banco de Dados
      */
     public List<Acesso> getAcessos() {
         return acessoRepository.findAll();
