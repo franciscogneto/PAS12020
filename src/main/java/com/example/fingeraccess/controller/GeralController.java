@@ -2,6 +2,8 @@ package com.example.fingeraccess.controller;
 
 import java.util.List;
 
+import com.example.fingeraccess.entidade.Acesso;
+import com.example.fingeraccess.entidade.Cadastro;
 import com.example.fingeraccess.entidade.LeitorBiometrico;
 import com.example.fingeraccess.entidade.Master;
 import com.example.fingeraccess.entidade.Usuario;
@@ -44,6 +46,32 @@ public class GeralController {
         List<Usuario> list = service.getUsuarios();
 
         mv.addObject("usuarios", list);
+
+        return mv;
+    }
+
+    // -------------------- Cadastro ----------------------------------------
+    @GetMapping("/cadastros")
+    public ModelAndView getCadastros() {
+
+        ModelAndView mv = new ModelAndView("cadastrosView");
+        
+        List<Cadastro> list = service.getCadastros();
+
+        mv.addObject("cadastros", list);
+
+        return mv;
+    }
+
+    // -------------------- Acesso ----------------------------------------
+    @GetMapping("/acessos")
+    public ModelAndView getAcessos() {
+
+        ModelAndView mv = new ModelAndView("acessosView");
+        
+        List<Acesso> list = service.getAcessos();
+
+        mv.addObject("acessos", list);
 
         return mv;
     }
