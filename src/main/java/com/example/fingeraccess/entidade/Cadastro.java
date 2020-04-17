@@ -9,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -26,11 +27,11 @@ public class Cadastro implements Serializable{
     private long id;
 
     @Id
-    @ManyToMany
+    @OneToOne
     @JoinColumn(name="idLeitor", referencedColumnName="ID")
     private LeitorBiometrico  leitorBiometrico;
 
-    @ManyToMany
+    @OneToOne
     @JoinColumn(name="idUsuario", referencedColumnName="ID")
     private Usuario usuario;
   
