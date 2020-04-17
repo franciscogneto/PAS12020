@@ -1,34 +1,24 @@
 package com.example.fingeraccess.entidade;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
+@IdClass(IdCadastro.class)
 @Table(name="Cadastro")
-public class Cadastro implements Serializable{
-
-    /**
-     *
-     */
-    private static final long serialVersionUID = 1L;
+public class Cadastro{
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ID", nullable=false, unique=true)
     private long id;
 
     @Id
-    @OneToOne
-    @JoinColumn(name="idLeitor", referencedColumnName="ID")
+    @Column(name="idLeitor", nullable=false, unique=true)
     private LeitorBiometrico  leitorBiometrico;
 
     @OneToOne

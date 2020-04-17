@@ -25,7 +25,7 @@ public class Usuario implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ID", nullable=false, unique=true)
-    private int id;
+    private long id;
 
     @Column(name="nome", nullable=false, unique=false)
     private String nome;
@@ -51,7 +51,7 @@ public class Usuario implements Serializable{
     @Column(name="celular", nullable=false, unique=false)
     private String celular;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 

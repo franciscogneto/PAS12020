@@ -25,7 +25,7 @@ public class LeitorBiometrico implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name="ID", nullable=false, unique=true)
-    private int id;
+    private long id;
 
     @Column(name="local", nullable=false, unique=false)
     private String local;
@@ -39,7 +39,7 @@ public class LeitorBiometrico implements Serializable{
     @Column(name="senha", nullable=false, unique=false)
     private String senha;
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
