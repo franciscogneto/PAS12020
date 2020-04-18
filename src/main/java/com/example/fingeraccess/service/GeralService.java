@@ -40,6 +40,14 @@ public class GeralService {
         return usuarioRepository.findAll();
     }
 
+    /**
+     * Método responsável em cadastrar um novo usuário no Banco de Dados
+    */
+    public void addUsuario(Usuario usuario)
+    {
+        usuarioRepository.save(usuario);
+    }
+
     // -------------------- Leitor ------------------------------------------
 
     /**
@@ -51,6 +59,14 @@ public class GeralService {
         return leitorRepository.findAll();
     }
 
+    /**
+     * Método responsável em cadastrar um novo Leitor Biometrico no Banco de Dados
+    */
+    public void addLeitorBiometrico(LeitorBiometrico leitorBiometrico)
+    {
+        leitorRepository.save(leitorBiometrico);
+    }
+
     // -------------------- Cadastro ------------------------------------------
 
     /**
@@ -60,6 +76,14 @@ public class GeralService {
      */
     public List<Cadastro> getCadastros() {
         return cadastroRepository.findAll();
+    }
+
+    /**
+     * Método responsável em cadastrar um novo cadastro de usuário em um leitor biométrico do Banco de Dados
+    */
+    public void addCadastro(Cadastro cadastro)
+    {
+        cadastroRepository.save(cadastro);
     }
 
     // -------------------- Acesso ------------------------------------------
@@ -97,4 +121,11 @@ public class GeralService {
         return false;
     }
 
+    /**
+     * Método responsável em cadastrar um novo login master no Banco de Dados
+    */
+    public void addMaster(Master loginMaster)
+    {
+        masterRepository.save(loginMaster);
+    }
 }
