@@ -37,6 +37,31 @@ public class GeralController {
         return mv;
     }
 
+    @GetMapping("/cadastroLeitor")
+    public String cadastroLeitor(){
+
+        return "cadastroLeitorView";
+    }
+
+    @PostMapping("/salvaLeitor")
+    public ModelAndView salvaLeitor(@ModelAttribute LeitorBiometrico leitorBiometrico) {
+
+        ModelAndView mv = new ModelAndView();
+
+        if(leitorBiometrico.getLocal().trim().isEmpty() || leitorBiometrico.getCapacidade() <= 0 || leitorBiometrico.getFabricante().trim().isEmpty() || leitorBiometrico.getSenha().trim().isEmpty())
+        {
+            mv.setViewName("errorView");         
+        }
+        else
+        {
+            service.addLeitorBiometrico(leitorBiometrico);
+
+            mv.setViewName("redirect:/app/cadastroLeitor");
+        }
+
+        return mv;
+    }
+
     // -------------------- Usuário ----------------------------------------
     @GetMapping("/usuarios")
     public ModelAndView getUsuarios() {
