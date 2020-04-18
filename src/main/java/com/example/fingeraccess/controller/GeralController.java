@@ -75,6 +75,33 @@ public class GeralController {
         return mv;
     }
 
+    @GetMapping("/cadastroUsuario")
+    public String cadastroUsuario(){
+
+        return "cadastroUsuarioView";
+    }
+
+    @PostMapping("/salvaUsuario")
+    public ModelAndView salvaUsuario(@ModelAttribute Usuario usuario) {
+
+        ModelAndView mv = new ModelAndView();
+
+        if(usuario.getNome().trim().isEmpty() || usuario.getCpf().trim().isEmpty() || usuario.getDatanasc().trim().isEmpty()
+            || usuario.getCidade().trim().isEmpty() || usuario.getEndereco().trim().isEmpty() || usuario.getEmail().trim().isEmpty()
+            || usuario.getTelefone().trim().isEmpty() || usuario.getCelular().trim().isEmpty())
+        {
+            mv.setViewName("errorView");         
+        }
+        else
+        {
+            service.addUsuario(usuario);
+
+            mv.setViewName("redirect:/app/cadastroUsuario");
+        }
+
+        return mv;
+    }
+
     // -------------------- Cadastro ----------------------------------------
     @GetMapping("/cadastros")
     public ModelAndView getCadastros() {
@@ -84,6 +111,31 @@ public class GeralController {
         List<Cadastro> list = service.getCadastros();
 
         mv.addObject("cadastros", list);
+
+        return mv;
+    }
+
+    @GetMapping("/cadastroCadastro")
+    public String cadastroCadastro(){
+
+        return "cadastroCadastroView";
+    }
+
+    @PostMapping("/salvaCadastro")
+    public ModelAndView salvaCadastro(@ModelAttribute Cadastro cadastro) {
+
+        ModelAndView mv = new ModelAndView();
+
+        if(cadastro.getId() < 0 || cadastro.getId() >= cadastro.getLeitorBiometrico().getCapacidade() || cadastro.getDataCadastro().trim().isEmpty())
+        {
+            mv.setViewName("errorView");         
+        }
+        else
+        {
+            service.addCadastro(cadastro);
+
+            mv.setViewName("redirect:/app/cadastroCadastro");
+        }
 
         return mv;
     }
