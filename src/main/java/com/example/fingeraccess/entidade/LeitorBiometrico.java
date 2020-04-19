@@ -24,8 +24,8 @@ public class LeitorBiometrico implements Serializable{
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="ID", nullable=false, unique=true)
-    private long id;
+    @Column(name="IDLeitor", nullable=false, unique=true)
+    private long idLeitor;
 
     @Column(name="local", nullable=false, unique=false)
     private String local;
@@ -40,11 +40,11 @@ public class LeitorBiometrico implements Serializable{
     private String senha;
 
     public long getId() {
-        return id;
+        return idLeitor;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.idLeitor = id;
     }
 
     public String getLocal() {
@@ -81,7 +81,8 @@ public class LeitorBiometrico implements Serializable{
 
     @Override
     public String toString() {
-        return "LeitorBiometrico [capacidade=" + capacidade + ", fabricante=" + fabricante + ", id=" + id + ", local="
+        return "LeitorBiometrico [capacidade=" + capacidade + ", fabricante=" + fabricante + ", id=" + idLeitor
+                + ", local="
                 + local + "]";
     }
 }

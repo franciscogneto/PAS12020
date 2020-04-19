@@ -1,20 +1,26 @@
 package com.example.fingeraccess.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import com.example.fingeraccess.entidade.Acesso;
 import com.example.fingeraccess.entidade.Cadastro;
 import com.example.fingeraccess.entidade.LeitorBiometrico;
 import com.example.fingeraccess.entidade.Master;
 import com.example.fingeraccess.entidade.Usuario;
+import com.example.fingeraccess.repository.LeitorBiometricoRepository;
 import com.example.fingeraccess.service.GeralService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -24,8 +30,44 @@ public class GeralController {
     @Autowired
     private GeralService service;
 
+    @Autowired
+    private LeitorBiometricoRepository leitorRep;
+
     // -------------------- Leitor ------------------------------------------
     @GetMapping("/leitores")
+    public String showLeitoresPage(Model model, @RequestParam(defaultValue = "0") int page) {
+
+        model.addAttribute("data", leitorRep.findAll(PageRequest.of(page, 4)));
+
+        return "leitoresView";
+    }
+
+    @PostMapping("/saveLeitor")
+    public String saveLeitor(LeitorBiometrico leitor) {
+
+        service.addLeitorBiometrico(leitor);
+
+        return "redirect:/leitores";
+    }
+
+    @GetMapping("/deleteLeitor")
+    public String deleteLeitor(Long id) {
+
+        // service.deleteLeitorBiometrico(id);
+
+        leitorRep.deleteById(id);
+
+        return "redirect:/leitores";
+    }
+
+    @GetMapping("/findOneLeitor")
+    @ResponseBody
+    public Optional<LeitorBiometrico> findOneLeitor(Long id) {
+
+        return leitorRep.findById(id);
+    }
+
+    /*@GetMapping("/leitores")
     public ModelAndView getLeitoresBiometricos() {
 
         ModelAndView mv = new ModelAndView("leitoresBiometricosView");
@@ -60,7 +102,7 @@ public class GeralController {
         }
 
         return mv;
-    }
+    }*/
 
     // -------------------- Usuário ----------------------------------------
     @GetMapping("/usuarios")
@@ -126,7 +168,7 @@ public class GeralController {
 
         ModelAndView mv = new ModelAndView();
 
-        if(cadastro.getId() < 0 || cadastro.getId() >= cadastro.getLeitorBiometrico().getCapacidade() || cadastro.getDataCadastro().trim().isEmpty())
+        if(cadastro.getIdCadastro() < 0 || cadastro.getIdCadastro() >= cadastro.getLeitorBiometrico().getCapacidade() || cadastro.getDataCadastro().trim().isEmpty())
         {
             mv.setViewName("errorView");         
         }

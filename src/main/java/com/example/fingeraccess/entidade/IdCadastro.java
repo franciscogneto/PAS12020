@@ -2,9 +2,6 @@ package com.example.fingeraccess.entidade;
 
 import java.io.Serializable;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-
 public class IdCadastro implements Serializable {
 
     /**
@@ -12,10 +9,8 @@ public class IdCadastro implements Serializable {
      */
     private static final long serialVersionUID = 1L;
 
-    private long idCadastro;
- 
-    @OneToOne
-    @JoinColumn(name="idLeitor", referencedColumnName="ID")
+	private long idCadastro;
+	
     private LeitorBiometrico leitorBiometrico;
  
     public IdCadastro() {

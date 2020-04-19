@@ -1,28 +1,34 @@
 package com.example.fingeraccess.entidade;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
-import javax.persistence.Table;
 
 @Entity
 @IdClass(IdCadastro.class)
-@Table(name="Cadastro")
-public class Cadastro{
+public class Cadastro implements Serializable{
+
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name="ID", nullable=false, unique=true)
-    private long id;
+    @Column(name="IDCadastro", nullable=false, unique=true)
+    private long idCadastro;
 
     @Id
-    @Column(name="idLeitor", nullable=false, unique=true)
-    private LeitorBiometrico  leitorBiometrico;
+    @OneToOne
+    @JoinColumn(name="idLeitorCadastro", referencedColumnName="IDLeitor")
+    private LeitorBiometrico leitorBiometrico;
 
     @OneToOne
-    @JoinColumn(name="idUsuario", referencedColumnName="ID")
+    @JoinColumn(name="idUsuario", referencedColumnName="IDUsuario")
     private Usuario usuario;
   
     @Column(name="dataCadastro", nullable=false, unique=false)
@@ -37,12 +43,12 @@ public class Cadastro{
         this.dataCadastro = dataCadastro;
     }
 
-    public long getId() {
-        return id;
+    public long getIdCadastro() {
+        return idCadastro;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public void setIdCadastro(long idCadastro) {
+        this.idCadastro = idCadastro;
     }
 
     public LeitorBiometrico getLeitorBiometrico() {
@@ -71,7 +77,7 @@ public class Cadastro{
 
     @Override
     public String toString() {
-        return "Cadastro [dataCadastro=" + dataCadastro + ", id=" + id + ", leitorBiometrico=" + leitorBiometrico
-                + ", usuario=" + usuario + "]";
+        return "Cadastro [dataCadastro=" + dataCadastro + ", idCadastro=" + idCadastro + ", leitorBiometrico="
+                + leitorBiometrico + ", usuario=" + usuario + "]";
     }
 }

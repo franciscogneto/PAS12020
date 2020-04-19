@@ -24,8 +24,8 @@ public class Usuario implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="ID", nullable=false, unique=true)
-    private long id;
+    @Column(name="IDUsuario", nullable=false, unique=true)
+    private long idUsuario;
 
     @Column(name="nome", nullable=false, unique=false)
     private String nome;
@@ -52,11 +52,11 @@ public class Usuario implements Serializable{
     private String celular;
 
     public long getId() {
-        return id;
+        return idUsuario;
     }
 
     public void setId(int id) {
-        this.id = id;
+        this.idUsuario = id;
     }
 
     public String getNome() {
@@ -126,7 +126,8 @@ public class Usuario implements Serializable{
     @Override
     public String toString() {
         return "Usuario [celular=" + celular + ", cidade=" + cidade + ", cpf=" + cpf + ", datanasc=" + datanasc
-                + ", email=" + email + ", endereco=" + endereco + ", id=" + id + ", nome=" + nome + ", telefone="
+                + ", email=" + email + ", endereco=" + endereco + ", id=" + idUsuario + ", nome=" + nome
+                + ", telefone="
                 + telefone + "]";
     }
 

@@ -22,19 +22,20 @@ public class Acesso implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name="NUM", nullable=false, unique=true)
+    @Column(name="IDAcesso", nullable=false, unique=true)
     private long numAcesso;
 
     @OneToOne
-    @JoinColumn(name="idCadastro", referencedColumnName="ID")
+    @JoinColumn(name="idCadastro", referencedColumnName="IDCadastro")
+    @JoinColumn(name="idLeitorCadastro", referencedColumnName="idLeitorCadastro")
     private Cadastro cadastro;
 
     @OneToOne
-    @JoinColumn(name="idLeitor", referencedColumnName="ID")
+    @JoinColumn(name="idLeitor", referencedColumnName="IDLeitor")
     private LeitorBiometrico leitorBiometrico;
 
     @OneToOne
-    @JoinColumn(name="idUsuario", referencedColumnName="ID")
+    @JoinColumn(name="idUsuario", referencedColumnName="IDUsuario")
     private Usuario usuario;
     
     @Column(name="dataAcesso", nullable=false, unique=false)
