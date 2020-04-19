@@ -15,9 +15,9 @@
 		<div class = "tela">
 			<form th:action="@{/app/login}" method="POST">
 				<label for="login">Login</label>
-				<input type="login" name="" placeholder="">
+				<input type="login" name="usuario" placeholder="Usuário" required>
 				<label for="password">Password</label>
-				<input type="password" name="" placeholder="">
+				<input type="password" name="password" placeholder="Senha" required>
 				<input type="submit" value="Cadastrar" />
 			</form>	
 				<img width="180px" height="150px" th:src="@{/logo.png}"/>

@@ -207,6 +207,7 @@ public class GeralController {
     @PostMapping("/login")
     public ModelAndView confereLogin(@ModelAttribute Master master) {
         ModelAndView mv = new ModelAndView();
+        System.out.println(master);
         if (service.confereLogin(master))
             mv.setViewName("login/masterView");
         else {
