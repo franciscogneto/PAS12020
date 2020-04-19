@@ -208,10 +208,9 @@ public class GeralController {
     public ModelAndView confereLogin(@ModelAttribute Master master) {
         ModelAndView mv = new ModelAndView();
         if (service.confereLogin(master))
-            mv.setViewName("redirect: /app/login/masterView");
+            mv.setViewName("login/masterView");
         else {
-            mv.setViewName("redirect: /app/login/loginView");
-            mv.addObject("exist", false);
+            mv.setViewName("login/loginView");
         }
 
         return mv;

@@ -13,13 +13,15 @@
 <body>
 	<div>	
 		<div class = "tela">
-			<label for="login">Login</label>
-			<input type="login" name="" placeholder="">
-			<label for="password">Password</label>
-			<input type="password" name="" placeholder="">
-			<button type="button" value="enviar">Login</button>
-			<img width="180px" height="150px" th:src="@{/logo.png}"/>
-			<!--<img src="Logo.png" width="180px" height="150px">-->
+			<form th:action="@{/app/login}" method="POST">
+				<label for="login">Login</label>
+				<input type="login" name="" placeholder="">
+				<label for="password">Password</label>
+				<input type="password" name="" placeholder="">
+				<input type="submit" value="Cadastrar" />
+			</form>	
+				<img width="180px" height="150px" th:src="@{/logo.png}"/>
+				<!--<img src="Logo.png" width="180px" height="150px">-->			
 		</div>
 	</div>    
 </body>
