@@ -198,9 +198,9 @@ public class GeralController {
     // -------------------- Master ------------------------------------------
     @GetMapping("/login")
     public ModelAndView getMaster() {
-        ModelAndView mv = new ModelAndView("redirect: /app/login/loginView");
+        ModelAndView mv = new ModelAndView("login/loginView");
         //mv.addObject("masters", service.getMaster());
-        mv.addObject("exist", true);
+        //mv.addObject("exist", true);
         return mv;
     }
     //Valida o login e senha inseridos
