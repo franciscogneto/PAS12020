@@ -13,7 +13,6 @@ import com.example.fingeraccess.repository.LeitorBiometricoRepository;
 import com.example.fingeraccess.repository.MasterRepository;
 import com.example.fingeraccess.repository.UsuarioRepository;
 
-import org.hibernate.annotations.SourceType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

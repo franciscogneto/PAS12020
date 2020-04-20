@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-
+    <script type="text/javascript" th:src="@{../js/main.js}" src="../static/js/main.js"></script>
 </head>
 <body>
 
@@ -21,6 +21,7 @@
                             <th>LOCAL</th>
                             <th>CAPACIDADE</th>
                             <th>FABRICANTE</th>
+                            <th>SENHA</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -29,26 +30,134 @@
                             <td th:text="${leitor.local}"></td>
                             <td th:text="${leitor.capacidade}"></td>
                             <td th:text="${leitor.fabricante}"></td>
+                            <td th:text="${leitor.senha}"></td>
+                            <td> 
+                                <a th:href="@{findOneLeitor/(id=${leitor.id})}" class="btn btn-primary eBtn">Edit</a>
+                                <a th:href="@{deleteLeitor/(id=${leitor.id})}" class="btn btn-danger delBtn">Delete</a>     
+                            </td>
                         </tr>
 
                     </tbody>
 
-
-
-
-
-
                 </table>
-
-
-
+                <hr/>
+                <div class="col text-center">
+                    <button class="btn btn-success nBtn">New</button>
+                </div>
+                <ul class="nav nav-pills">
+                <li class="nav-item" th:each="i : ${#numbers.sequence(0,data.totalPages-1)}">
+                    <a th:href="@{/app/leitores(page=${i})}" th:text="${i}" class="nav-link"
+                    th:classappend="${currentPage}==${i}?'active':''"></a>
+                </li>
+                </ul>
             </div>
-
-
-
-
         </div>
 
+        <div class="editForm">
+            <form th:action="@{/app/saveLeitor}" method="post">
+                <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editModalLabel">Update</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="id" class="col-form-label">ID:</label>
+                                <input type="text" class="form-control" id="id" name="id" value="" readonly />
+                            </div>
+                            <div class="form-group">
+                                <label for="local" class="col-form-label">Local:</label>
+                                <input type="text" class="form-control" id="local" name="local" value="" />
+                            </div>
+                            <div class="form-group">
+                                <label for="capacidade" class="col-form-label">Capacidade:</label>
+                                <input type="text" class="form-control" id="capacidade" name="capacidade" value="" />
+                            </div>
+                            <div class="form-group">
+                                <label for="fabricante" class="col-form-label">Fabricante:</label>
+                                <input type="text" class="form-control" id="fabricante" name="fabricante" value="" />
+                            </div>
+                            <div class="form-group">
+                                <label for="senha" class="col-form-label">Senha:</label>
+                                <input type="text" class="form-control" id="senha" name="senha" value="" />
+                            </div>  
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input type="submit" class="btn btn-primary" value="Save" />
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="newForm">
+            <form th:action="@{/app/saveLeitor}" method="post">
+                <div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="newModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="newModalLabel">Create</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="local" class="col-form-label">Local:</label>
+                                <input type="text" class="form-control" id="local" name="local" value="" />
+                            </div>
+                            <div class="form-group">
+                                <label for="capacidade" class="col-form-label">Capacidade:</label>
+                                <input type="text" class="form-control" id="capacidade" name="capacidade" value="" />
+                            </div>
+                            <div class="form-group">
+                                <label for="fabricante" class="col-form-label">Fabricante:</label>
+                                <input type="text" class="form-control" id="fabricante" name="fabricante" value="" />
+                            </div>
+                            <div class="form-group">
+                                <label for="senha" class="col-form-label">Senha:</label>
+                                <input type="text" class="form-control" id="senha" name="senha" value="" />
+                            </div>  
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input type="submit" class="btn btn-primary" value="Save" />
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="deleteModalLabel">Delete</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <p class="alert alert-danger">
+                        Are you sure you want to delete this device?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <a href="" class="btn btn-danger" id="delRef">Delete</a>
+                </div>
+              </div>
+            </div>
+        </div>
     </div>
     
 </body>

@@ -39,6 +39,8 @@ public class GeralController {
 
         model.addAttribute("data", leitorRep.findAll(PageRequest.of(page, 4)));
 
+        model.addAttribute("currentPage", page);
+
         return "leitoresView";
     }
 
@@ -47,7 +49,7 @@ public class GeralController {
 
         service.addLeitorBiometrico(leitor);
 
-        return "redirect:/leitores";
+        return "redirect:/app/leitores";
     }
 
     @GetMapping("/deleteLeitor")
@@ -57,7 +59,7 @@ public class GeralController {
 
         leitorRep.deleteById(id);
 
-        return "redirect:/leitores";
+        return "redirect:/app/leitores";
     }
 
     @GetMapping("/findOneLeitor")
