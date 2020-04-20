@@ -199,17 +199,14 @@ public class GeralController {
     @GetMapping("/login")
     public ModelAndView getMaster() {
         ModelAndView mv = new ModelAndView("login/loginView");
-        //mv.addObject("masters", service.getMaster());
-        //mv.addObject("exist", true);
         return mv;
     }
     //Valida o login e senha inseridos
     @PostMapping("/login")
     public ModelAndView confereLogin(@ModelAttribute Master master) {
         ModelAndView mv = new ModelAndView();
-        System.out.println(master);
         if (service.confereLogin(master))
-            mv.setViewName("login/masterView");
+            mv.setViewName("/Menu/menuView");
         else {
             mv.setViewName("login/loginView");
         }

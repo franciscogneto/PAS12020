@@ -9,7 +9,7 @@ body{
 	background-color: #BBBBBB;
 	color: red;
 	width: 400px;
-	height: 350px;
+	height: 455px;
 	margin: 150px 0 0 500px;
 	padding-top: 30px;
 	text-align: center;
@@ -33,7 +33,7 @@ body{
 
 .tela button{
 	display: block;
-	margin: 25px 0 0 180px;
+	margin: 15px 0 0 168px;
 	font-family: 20px;
 	border: 4px solid #F6F4ED;
 }
