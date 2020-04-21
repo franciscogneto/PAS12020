@@ -19,7 +19,7 @@
             </tr>
             <tr th:each="leitor: ${leitores}">
                 <td th:text="${leitor.id}">
-                <td th:text="${leitor.local}">
+                <td class="text-truncate" style="max-width: 100px;" th:text="${leitor.local}">
                 <td th:text="${leitor.capacidade}">
                 <td th:text="${leitor.fabricante}">
             </tr>

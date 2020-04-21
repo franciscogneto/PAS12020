@@ -7,27 +7,27 @@
     <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-    <script type="text/javascript" th:src="@{../js/main.js}" src="../static/js/main.js"></script>
+    <script type="text/javascript" th:src="@{../js/mainLeitor.js}" src="../static/js/mainLeitor.js"></script>
 </head>
 <body>
 
     <div class="container">
         <div class="card">
             <div class="card-block">
-                <table class="table table-hover">
+                <table class="table table-hover text-center">
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>LOCAL</th>
-                            <th>CAPACIDADE</th>
-                            <th>FABRICANTE</th>
-                            <th>SENHA</th>
+                            <th class="text-center">ID</th>
+                            <th class="text-center">LOCAL</th>
+                            <th class="text-center">CAPACIDADE</th>
+                            <th class="text-center">FABRICANTE</th>
+                            <th class="text-center">SENHA</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="leitor :${data.content}">
                             <td th:text="${leitor.id}"></td>
-                            <td th:text="${leitor.local}"></td>
+                            <td class="text-truncate" style="max-width: 100px;" th:text="${leitor.local}"></td>
                             <td th:text="${leitor.capacidade}"></td>
                             <td th:text="${leitor.fabricante}"></td>
                             <td th:text="${leitor.senha}"></td>
@@ -42,14 +42,25 @@
                 </table>
                 <hr/>
                 <div class="col text-center">
+                    <a th:href="@{/app/menu}" method="post" class="btn btn-danger rBtn" role="button">Return</a>
                     <button class="btn btn-success nBtn">New</button>
                 </div>
-                <ul class="nav nav-pills">
-                <li class="nav-item" th:each="i : ${#numbers.sequence(0,data.totalPages-1)}">
-                    <a th:href="@{/app/leitores(page=${i})}" th:text="${i}" class="nav-link"
-                    th:classappend="${currentPage}==${i}?'active':''"></a>
-                </li>
-                </ul>
+                <div th:if="${data.totalPages == 0}">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item" th:each="i : ${#numbers.sequence(0,data.totalPages)}">
+                            <a th:href="@{/app/leitores(page=${i})}" th:text="${i}" class="nav-link"
+                            th:classappend="${currentPage}==${i}?'active':''"></a>
+                        </li>
+                    </ul>
+                </div>
+                <div th:unless="${data.totalPages == 0}">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item" th:each="i : ${#numbers.sequence(0,data.totalPages-1)}">
+                            <a th:href="@{/app/leitores(page=${i})}" th:text="${i}" class="nav-link"
+                            th:classappend="${currentPage}==${i}?'active':''"></a>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
 

@@ -2,7 +2,7 @@
  * 
  */
 
- $(document).ready(function(){
+$(document).ready(function(){
 
     $('.nBtn, .table .eBtn').on('click', function(event){
 

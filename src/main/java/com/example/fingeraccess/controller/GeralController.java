@@ -8,7 +8,10 @@ import com.example.fingeraccess.entidade.Cadastro;
 import com.example.fingeraccess.entidade.LeitorBiometrico;
 import com.example.fingeraccess.entidade.Master;
 import com.example.fingeraccess.entidade.Usuario;
+import com.example.fingeraccess.repository.AcessoRepository;
+import com.example.fingeraccess.repository.CadastroRepository;
 import com.example.fingeraccess.repository.LeitorBiometricoRepository;
+import com.example.fingeraccess.repository.UsuarioRepository;
 import com.example.fingeraccess.service.GeralService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +35,12 @@ public class GeralController {
 
     @Autowired
     private LeitorBiometricoRepository leitorRep;
+    @Autowired
+    private UsuarioRepository usuarioRep;
+    @Autowired
+    private CadastroRepository cadastroRep;
+    @Autowired
+    private AcessoRepository acessoRep;
 
     // -------------------- Leitor ------------------------------------------
     @GetMapping("/leitores")
@@ -108,6 +117,39 @@ public class GeralController {
 
     // -------------------- Usuário ----------------------------------------
     @GetMapping("/usuarios")
+    public String showUsuariosPage(Model model, @RequestParam(defaultValue = "0") int page) {
+
+        model.addAttribute("data", usuarioRep.findAll(PageRequest.of(page, 4)));
+
+        model.addAttribute("currentPage", page);
+
+        return "usuariosView";
+    }
+
+    @PostMapping("/saveUsuario")
+    public String saveUsuario(Usuario usuario) {
+
+        service.addUsuario(usuario);
+
+        return "redirect:/app/usuarios";
+    }
+
+    @GetMapping("/deleteUsuario")
+    public String deleteUsuario(Long id) {
+
+        usuarioRep.deleteById(id);
+
+        return "redirect:/app/usuarios";
+    }
+
+    @GetMapping("/findOneUsuario")
+    @ResponseBody
+    public Optional<Usuario> findOneUsuario(Long id) {
+
+        return usuarioRep.findById(id);
+    }
+
+    /*@GetMapping("/usuarios")
     public ModelAndView getUsuarios() {
 
         ModelAndView mv = new ModelAndView("usuariosView");
@@ -144,7 +186,7 @@ public class GeralController {
         }
 
         return mv;
-    }
+    }*/
 
     // -------------------- Cadastro ----------------------------------------
     @GetMapping("/cadastros")
@@ -214,6 +256,10 @@ public class GeralController {
         }
 
         return mv;
+    }
 
+    @GetMapping("/menu")
+    public String returnToMenu(){
+        return "/Menu/menuView";
     }
 }
