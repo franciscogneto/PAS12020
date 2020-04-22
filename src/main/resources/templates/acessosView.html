@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-block">
+                <table class="table table-hover text-center">
+                    <thead>
+                        <tr>
+                            <th class="text-center">NÚMERO</th>
+                            <th class="text-center">ID LEITOR</th>
+                            <th class="text-center">ID USUÁRIO</th>
+                            <th class="text-center">DATA DO ACESSO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="acesso :${data.content}">
+                            <td th:text="${acesso.numAcesso}"></td>
+                            <td th:text="${acesso.leitorBiometrico.id}"></td>
+                            <td th:text="${acesso.usuario.id}"></td>
+                            <td th:text="${acesso.dataAcesso}"></td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+                <hr/>
+                <div class="col text-center">
+                    <a th:href="@{/app/menu}" method="post" class="btn btn-danger rBtn" role="button">Return</a>
+                </div>
+                <div th:if="${data.totalPages == 0}">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item" th:each="i : ${#numbers.sequence(0,data.totalPages)}">
+                            <a th:href="@{/app/acessos(page=${i})}" th:text="${i}" class="nav-link"
+                            th:classappend="${currentPage}==${i}?'active':''"></a>
+                        </li>
+                    </ul>
+                </div>
+                <div th:unless="${data.totalPages == 0}">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item" th:each="i : ${#numbers.sequence(0,data.totalPages-1)}">
+                            <a th:href="@{/app/acessos(page=${i})}" th:text="${i}" class="nav-link"
+                            th:classappend="${currentPage}==${i}?'active':''"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+</body>
+</html>

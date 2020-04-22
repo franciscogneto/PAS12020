@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script type="text/javascript" th:src="@{../js/mainCadastro.js}" src="../static/js/mainCadastro.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+            <div class="card-block">
+                <table class="table table-hover text-center">
+                    <thead>
+                        <tr>
+                            <th class="text-center">ID</th>
+                            <th class="text-center">ID LEITOR</th>
+                            <th class="text-center">ID USUÁRIO</th>
+                            <th class="text-center">DATA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="cadastro :${data.content}">
+                            <td th:text="${cadastro.idCadastro}"></td>
+                            <td th:text="${cadastro.leitorBiometrico.id}"></td>
+                            <td th:text="${cadastro.usuario.id}"></td>
+                            <td th:text="${cadastro.dataCadastro}"></td> 
+                            <td> 
+                                <a th:href="@{findOneCadastro/(id=${cadastro.idCadastro})}" class="btn btn-primary eBtn">Edit</a>
+                                <a th:href="@{deleteCadastro/(id=${cadastro.idCadastro})}" class="btn btn-danger delBtn">Delete</a>     
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+                <hr/>
+                <div class="col text-center">
+                    <a th:href="@{/app/menu}" method="post" class="btn btn-danger rBtn" role="button">Return</a>
+                    <button class="btn btn-success nBtn">New</button>
+                </div>
+                <div th:if="${data.totalPages == 0}">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item" th:each="i : ${#numbers.sequence(0,data.totalPages)}">
+                            <a th:href="@{/app/cadastros(page=${i})}" th:text="${i}" class="nav-link"
+                            th:classappend="${currentPage}==${i}?'active':''"></a>
+                        </li>
+                    </ul>
+                </div>
+                <div th:unless="${data.totalPages == 0}">
+                    <ul class="nav nav-pills">
+                        <li class="nav-item" th:each="i : ${#numbers.sequence(0,data.totalPages-1)}">
+                            <a th:href="@{/app/cadastros(page=${i})}" th:text="${i}" class="nav-link"
+                            th:classappend="${currentPage}==${i}?'active':''"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="editnewForm">
+            <form th:action="@{/app/saveCadastro}" method="post">
+                <div class="modal fade" id="editnewModal" tabindex="-1" role="dialog" aria-labelledby="editnewModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="editnewModalLabel">Update or Create</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="idCadastro" class="col-form-label">ID Permissão:</label>
+                                <input type="text" class="form-control" id="idCadastro" name="idCadastro" value="" />
+                            </div>
+                            <div class="form-group">
+                                <label for="idLeitorCadastro" class="col-form-label">ID Leitor:</label>
+                                <input type="text" class="form-control" id="idLeitorCadastro" name="idLeitorCadastro" value="" />
+                            </div>
+                            <div class="form-group">
+                                <label for="idUsuario" class="col-form-label">ID Usuário:</label>
+                                <input type="text" class="form-control" id="idUsuario" name="idUsuario" value="" />
+                            </div>
+                            <div class="form-group">
+                                <label for="dataCadastro" class="col-form-label">Data da Permissão:</label>
+                                <input type="text" class="form-control" id="dataCadastro" name="dataCadastro" value="" />
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <input type="submit" class="btn btn-primary" value="Save" />
+                        </div>
+                    </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="deleteModalLabel">Delete</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <p class="alert alert-danger">
+                        Are you sure you want to delete this register?
+                    </p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <a href="" class="btn btn-danger" id="delRef">Delete</a>
+                </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

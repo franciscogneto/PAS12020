@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import com.example.fingeraccess.entidade.Acesso;
 import com.example.fingeraccess.entidade.Cadastro;
+import com.example.fingeraccess.entidade.IdCadastro;
 import com.example.fingeraccess.entidade.LeitorBiometrico;
 import com.example.fingeraccess.entidade.Master;
 import com.example.fingeraccess.entidade.Usuario;
@@ -190,6 +191,39 @@ public class GeralController {
 
     // -------------------- Cadastro ----------------------------------------
     @GetMapping("/cadastros")
+    public String showCadastrosPage(Model model, @RequestParam(defaultValue = "0") int page) {
+
+        model.addAttribute("data", cadastroRep.findAll(PageRequest.of(page, 4)));
+
+        model.addAttribute("currentPage", page);
+
+        return "cadastrosView";
+    }
+
+    @PostMapping("/saveCadastro")
+    public String saveCadastro(Cadastro cadastro) {
+
+        service.addCadastro(cadastro);
+
+        return "redirect:/app/cadastros";
+    }
+
+    @GetMapping("/deleteCadastro")
+    public String deleteCadastro(IdCadastro idCadastro) {
+
+        cadastroRep.deleteById(idCadastro);
+
+        return "redirect:/app/cadastros";
+    }
+
+    @GetMapping("/findOneCadastro")
+    @ResponseBody
+    public Optional<Cadastro> findOneCadastro(IdCadastro idCadastro) {
+
+        return cadastroRep.findById(idCadastro);
+    }
+    
+    /*@GetMapping("/cadastros")
     public ModelAndView getCadastros() {
 
         ModelAndView mv = new ModelAndView("cadastrosView");
@@ -224,19 +258,17 @@ public class GeralController {
         }
 
         return mv;
-    }
+    }*/
 
     // -------------------- Acesso ----------------------------------------
     @GetMapping("/acessos")
-    public ModelAndView getAcessos() {
+    public String showAcessosPage(Model model, @RequestParam(defaultValue = "0") int page) {
 
-        ModelAndView mv = new ModelAndView("acessosView");
-        
-        List<Acesso> list = service.getAcessos();
+        model.addAttribute("data", acessoRep.findAll(PageRequest.of(page, 4)));
 
-        mv.addObject("acessos", list);
+        model.addAttribute("currentPage", page);
 
-        return mv;
+        return "acessosView";
     }
 
     // -------------------- Master ------------------------------------------
