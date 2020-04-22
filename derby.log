@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Wed Apr 22 00:50:22 BRT 2020:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0171-a002-0ffc-000000e3f198 
+Wed Apr 22 17:25:56 BRT 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0171-a391-873e-000003e296c0 
 on database directory C:\Users\vinic\Documents\FACENS\5 Semestre\PA V\PAS12020\dbfingeraccess with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418 
 Loaded from file:/C:/Users/vinic/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Oracle Corporation
