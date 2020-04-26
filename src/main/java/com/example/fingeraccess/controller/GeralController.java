@@ -1,9 +1,5 @@
 package com.example.fingeraccess.controller;
-
-import java.util.List;
 import java.util.Optional;
-
-import com.example.fingeraccess.entidade.Acesso;
 import com.example.fingeraccess.entidade.Cadastro;
 import com.example.fingeraccess.entidade.IdCadastro;
 import com.example.fingeraccess.entidade.LeitorBiometrico;
