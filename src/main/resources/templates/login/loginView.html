@@ -1,28 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-    <title>Tela - login</title>
-	<link rel="stylesheet" type="text/css" href="/style.css"/>
-	<!--<link rel="stylesheet" th:href="@{/app/login/style.css}"/>-->
-	<!--<link href="<c:url value="style.css" />" rel="stylesheet">-->
-	<!--<link rel="stylesheet" type="text/css" href='<c:url value="/style.css">'/>-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" type="text/css" href="/styleLogin.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+    <script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
+
 </head>
+
 <body>
-	<div>	
-		<div class = "tela">
-			<form th:action="@{/app/login}" method="POST">
-				<label for="login">Login</label>
-				<input type="login" name="usuario" placeholder="Usuário" required>
-				<label for="password">Password</label>
-				<input type="password" name="password" placeholder="Senha" required>
-				<input type="submit" value="Login" />
-			</form>	
-				<img width="180px" height="150px" th:src="@{/logo.png}"/>
-				<!--<img src="Logo.png" width="180px" height="150px">-->			
-		</div>
-	</div>    
+    <div class="modal-dialog text-center">
+        <div class="col-sm-8 main-section">
+            <div class="modal-content">
+                <form class="col-12" th:action="@{/app/login}" method="POST">
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" name="usuario" placeholder="Coloque seu usuário"
+                            required>
+                    </div>
+                    <div class="form-group2">
+                        <input type="password" class="form-control" name="password" placeholder="Coloque sua senha"
+                            required>
+                    </div>
+                    <button type="submit" class="btn" value="Login"><i type
+                            class="fas fa-sign-in-alt"></i>Login</button>
+                    <div class="col-12 logo-img">
+                        <img th:src="@{/logo.png}" width="155px" height="140px">
+                    </div>
+
+                </form>
+            </div>
+            <!--Fim do Modal Content-->
+        </div>
+    </div>
+
 </body>
+
 </html>

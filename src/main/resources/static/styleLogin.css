@@ -11,10 +11,8 @@ body{
 }
 
 .modal-content {
-	background-color: #3b4652;
 	opacity: .95;
 	padding: 40px 20px;
-	box-shadow: 0px 0px 10px #848484;
 }
 .logo-img {
 	padding-top: 5px;
@@ -26,6 +24,7 @@ body{
 }
 
 .form-group input {
+    background-color: gainsboro;
 	height: 42px;
 	border-radius: 7px;
 	border: 0;
@@ -46,6 +45,7 @@ body{
 }
 
 .form-group2 input {
+    background-color: gainsboro;
 	height: 42px;
 	border-radius: 7px;
 	border: 0;

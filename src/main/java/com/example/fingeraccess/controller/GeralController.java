@@ -276,6 +276,7 @@ public class GeralController {
     //Valida o login e senha inseridos
     @PostMapping("/login")
     public ModelAndView confereLogin(@ModelAttribute Master master) {
+
         ModelAndView mv = new ModelAndView();
         if (service.confereLogin(master))
             mv.setViewName("/Menu/menuView");
