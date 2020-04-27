@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+body{
+	font-family: 'Robot', sans-serif;
+	background: url(biometria.jpg) no-repeat center center fixed;
+	background-size: cover; 
+}
+.main-section{
+	margin: 0 auto auto;
+	margin-top: 200px;
+	padding: 0;
+}
+
+.modal-content {
+	background-color: #3b4652;
+	opacity: .95;
+	padding: 40px 20px;
+	box-shadow: 0px 0px 10px #848484;
+}
+.logo-img {
+	padding-top: 5px;
+	margin-bottom: -40px;
+}
+
+.form-group {
+	margin-bottom: 25px;
+}
+
+.form-group input {
+	height: 42px;
+	border-radius: 7px;
+	border: 0;
+	font-size: 17px;
+	padding-left: 54px;
+} 
+
+.form-group::before{
+	font-family: 'Font Awesome\ 5 Free';
+	content:"\f007";
+	position: absolute;
+	font-size: 22px;
+	left: 28px;
+	padding-top: 4px;
+}
+.form-group2 {
+	margin-bottom: 25px;
+}
+
+.form-group2 input {
+	height: 42px;
+	border-radius: 7px;
+	border: 0;
+	font-size: 17px;
+	padding-left: 54px;
+} 
+
+.form-group2::before{
+	font-family: 'Font Awesome\ 5 Free';
+	content:"\f023";
+	position: absolute;
+	font-size: 22px;
+	left: 28px;
+	padding-top: 4px;
+}
+
+button{
+	width: 40%;
+}
+
+.btn{
+	background-color: gray;
+	color: #fff;
+	font-size: 16px;
+}
