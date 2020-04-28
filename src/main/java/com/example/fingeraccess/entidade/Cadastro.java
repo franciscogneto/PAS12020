@@ -7,7 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 
 @Entity
 @IdClass(IdCadastro.class)
@@ -23,12 +23,10 @@ public class Cadastro implements Serializable{
     private long idCadastro;
 
     @Id
-    @OneToOne
-    @JoinColumn(name="idLeitorCadastro", referencedColumnName="IDLeitor")
     private LeitorBiometrico leitorBiometrico;
 
-    @OneToOne
-    @JoinColumn(name="idUsuario", referencedColumnName="IDUsuario")
+    @ManyToOne
+    @JoinColumn(name="idUsuarioCadastro", referencedColumnName="IDUsuario")
     private Usuario usuario;
   
     @Column(name="dataCadastro", nullable=false, unique=false)

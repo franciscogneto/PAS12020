@@ -1,12 +1,15 @@
 package com.example.fingeraccess.entidade;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -39,12 +42,20 @@ public class LeitorBiometrico implements Serializable{
     @Column(name="senha", nullable=false, unique=false)
     private String senha;
 
-    public long getId() {
+    @OneToMany
+    @JoinColumn(name="idLeitorCadastro", referencedColumnName="IDLeitor")
+    private List<Cadastro> cadastros;
+
+    @OneToMany
+    @JoinColumn(name="idLeitorAcesso", referencedColumnName="IDLeitor")
+    private List<Acesso> acessos;
+
+    public long getIdLeitor() {
         return idLeitor;
     }
 
-    public void setId(int id) {
-        this.idLeitor = id;
+    public void setIdLeitor(long idLeitor) {
+        this.idLeitor = idLeitor;
     }
 
     public String getLocal() {
@@ -79,10 +90,25 @@ public class LeitorBiometrico implements Serializable{
         this.senha = senha;
     }
 
+    public List<Cadastro> getCadastros() {
+        return cadastros;
+    }
+
+    public void setCadastros(List<Cadastro> cadastros) {
+        this.cadastros = cadastros;
+    }
+
+    public List<Acesso> getAcessos() {
+        return acessos;
+    }
+
+    public void setAcessos(List<Acesso> acessos) {
+        this.acessos = acessos;
+    }
+
     @Override
     public String toString() {
-        return "LeitorBiometrico [capacidade=" + capacidade + ", fabricante=" + fabricante + ", id=" + idLeitor
-                + ", local="
-                + local + "]";
+        return "LeitorBiometrico [capacidade=" + capacidade + ", fabricante=" + fabricante + ", idLeitor=" + idLeitor
+                + ", local=" + local + ", senha=" + senha + "]";
     }
 }

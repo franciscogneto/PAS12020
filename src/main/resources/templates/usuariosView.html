@@ -32,7 +32,7 @@
                         </thead>
                         <tbody>
                             <tr th:each="usuario :${data.content}">
-                                <td th:text="${usuario.id}"></td>
+                                <td th:text="${usuario.idUsuario}"></td>
                                 <td class="text-truncate" style="max-width: 250px;" th:text="${usuario.nome}"></td>
                                 <td th:text="${usuario.cpf}"></td>
                                 <td th:text="${usuario.datanasc}"></td>
@@ -42,8 +42,8 @@
                                 <td th:text="${usuario.telefone}"></td>
                                 <td th:text="${usuario.celular}"></td>
                                 <td> 
-                                    <a th:href="@{findOneUsuario/(id=${usuario.id})}" class="btn btn-primary eBtn">Edit</a>
-                                    <a th:href="@{deleteUsuario/(id=${usuario.id})}" class="btn btn-danger delBtn">Delete</a>     
+                                    <a th:href="@{findOneUsuario/(id=${usuario.idUsuario})}" class="btn btn-primary eBtn">Edit</a>
+                                    <a th:href="@{deleteUsuario/(id=${usuario.idUsuario})}" class="btn btn-danger delBtn">Delete</a>     
                                 </td>
                             </tr>
 
@@ -89,8 +89,8 @@
                             </div>
                             <div class="modal-body">
                                 <div class="form-group">
-                                    <label for="id" class="col-form-label">ID:</label>
-                                    <input type="text" class="form-control" id="id" name="id" value="" readonly />
+                                    <label for="idUsuario" class="col-form-label">ID:</label>
+                                    <input type="text" class="form-control" id="idUsuario" name="idUsuario" value="" readonly />
                                 </div>
                                 <div class="form-group">
                                     <label for="nome" class="col-form-label">Nome:</label>

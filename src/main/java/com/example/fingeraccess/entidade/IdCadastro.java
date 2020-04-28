@@ -2,6 +2,9 @@ package com.example.fingeraccess.entidade;
 
 import java.io.Serializable;
 
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 public class IdCadastro implements Serializable {
 
     /**
@@ -11,6 +14,8 @@ public class IdCadastro implements Serializable {
 
 	private long idCadastro;
 	
+	@ManyToOne
+    @JoinColumn(name="idLeitorCadastro", referencedColumnName="IDLeitor")
     private LeitorBiometrico leitorBiometrico;
  
     public IdCadastro() {

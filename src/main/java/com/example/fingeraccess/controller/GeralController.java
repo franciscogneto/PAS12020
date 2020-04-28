@@ -287,6 +287,29 @@ public class GeralController {
         return mv;
     }
 
+    //Valida o login e senha inseridos
+    @PostMapping("/verifyLogin")
+    public ModelAndView verifyLogin(@ModelAttribute Master master) {
+
+        ModelAndView mv = new ModelAndView("redirect:/app/menu");
+
+        if (service.confereLoginAtual(master))
+            mv.addObject("verify", true);
+        else {
+            mv.addObject("verify", false);
+        }
+
+        return mv;
+    }
+
+    @PostMapping("/updateMaster")
+    public String updateMaster(Master master) {
+
+        service.addMaster(master);
+
+        return "redirect:/app/menu";
+    }
+
     @GetMapping("/menu")
     public String returnToMenu(){
         return "/Menu/menuView";

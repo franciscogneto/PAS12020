@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,17 +25,17 @@ public class Acesso implements Serializable{
     @Column(name="IDAcesso", nullable=false, unique=true)
     private long numAcesso;
 
-    @OneToOne
-    @JoinColumn(name="idCadastro", referencedColumnName="IDCadastro")
-    @JoinColumn(name="idLeitorCadastro", referencedColumnName="idLeitorCadastro")
-    private Cadastro cadastro;
+    //@ManyToOne
+    //@JoinColumn(name="idCadastroAcesso", referencedColumnName="IDCadastro")
+    //@JoinColumn(name="idLeitorCadastroAcesso", referencedColumnName="idLeitorCadastro")
+    //private Cadastro cadastro;
 
-    @OneToOne
-    @JoinColumn(name="idLeitor", referencedColumnName="IDLeitor")
+    @ManyToOne
+    @JoinColumn(name="idLeitorAcesso", referencedColumnName="IDLeitor")
     private LeitorBiometrico leitorBiometrico;
 
-    @OneToOne
-    @JoinColumn(name="idUsuario", referencedColumnName="IDUsuario")
+    @ManyToOne
+    @JoinColumn(name="idUsuarioAcesso", referencedColumnName="IDUsuario")
     private Usuario usuario;
     
     @Column(name="dataAcesso", nullable=false, unique=false)
@@ -44,8 +44,8 @@ public class Acesso implements Serializable{
     public Acesso() {
     }
 
-    public Acesso(Cadastro cadastro, LeitorBiometrico leitorBiometrico, Usuario usuario, String dataAcesso) {
-        this.cadastro = cadastro;
+    public Acesso(long numAcesso, LeitorBiometrico leitorBiometrico, Usuario usuario, String dataAcesso) {
+        this.numAcesso = numAcesso;
         this.leitorBiometrico = leitorBiometrico;
         this.usuario = usuario;
         this.dataAcesso = dataAcesso;
@@ -57,14 +57,6 @@ public class Acesso implements Serializable{
 
     public void setNumAcesso(long numAcesso) {
         this.numAcesso = numAcesso;
-    }
-
-    public Cadastro getCadastro() {
-        return cadastro;
-    }
-
-    public void setCadastro(Cadastro cadastro) {
-        this.cadastro = cadastro;
     }
 
     public LeitorBiometrico getLeitorBiometrico() {
@@ -93,7 +85,7 @@ public class Acesso implements Serializable{
 
     @Override
     public String toString() {
-        return "Acesso [cadastro=" + cadastro + ", dataAcesso=" + dataAcesso + ", leitorBiometrico=" + leitorBiometrico
-                + ", numAcesso=" + numAcesso + ", usuario=" + usuario + "]";
+        return "Acesso [dataAcesso=" + dataAcesso + ", leitorBiometrico=" + leitorBiometrico + ", numAcesso="
+                + numAcesso + ", usuario=" + usuario + "]";
     }
 }

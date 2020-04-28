@@ -30,6 +30,8 @@ public class GeralService {
     @Autowired
     private AcessoRepository acessoRepository;
 
+    private String usuarioAtual;
+
     // -------------------- Usuário ----------------------------------------
     /**
      * Método responsável em retornar todos os usuários do Banco de Dados
@@ -116,7 +118,11 @@ public class GeralService {
     public boolean confereLogin(Master master) {
         for (Master aux : masterRepository.findAll()) {
             if (aux.getUsuario().equals(master.getUsuario()) && aux.getPassword().equals(master.getPassword()))
-                return true;
+            {
+                usuarioAtual = master.getUsuario();
+                return true;              
+            }
+               
         }
         return false;
     }
@@ -127,5 +133,25 @@ public class GeralService {
     public void addMaster(Master loginMaster)
     {
         masterRepository.save(loginMaster);
+    }
+
+    /**
+     * Método responsável em retornar se o login atual é o mesmo recebido por parâmetro
+     * 
+     * @param Master
+     * @return True se o login estiver correto ou False caso não esteja
+     */
+    public boolean confereLoginAtual(Master master) {
+
+        if(master.getUsuario().equals(usuarioAtual))
+        {
+            for (Master aux : masterRepository.findAll()) {
+                if (aux.getUsuario().equals(master.getUsuario()) && aux.getPassword().equals(master.getPassword()))
+                {
+                    return true;              
+                }
+            }
+        } 
+        return false;
     }
 }

@@ -12,7 +12,7 @@ $(document).ready(function(){
 
         if(text=='Edit'){
             $.get(href, function(leitor, status){
-                $('.editForm #id').val(leitor.id);
+                $('.editForm #idLeitor').val(leitor.idLeitor);
                 $('.editForm #local').val(leitor.local);
                 $('.editForm #capacidade').val(leitor.capacidade);
                 $('.editForm #fabricante').val(leitor.fabricante);

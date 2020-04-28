@@ -12,7 +12,7 @@ $(document).ready(function(){
 
         if(text=='Edit'){
             $.get(href, function(usuario, status){
-                $('.editForm #id').val(usuario.id);
+                $('.editForm #idUsuario').val(usuario.idUsuario);
                 $('.editForm #nome').val(usuario.nome);
                 $('.editForm #cpf').val(usuario.cpf);
                 $('.editForm #datanasc').val(usuario.datanasc);

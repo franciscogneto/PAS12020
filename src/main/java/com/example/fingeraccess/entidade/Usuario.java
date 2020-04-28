@@ -1,12 +1,15 @@
 package com.example.fingeraccess.entidade;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -51,12 +54,20 @@ public class Usuario implements Serializable{
     @Column(name="celular", nullable=false, unique=false)
     private String celular;
 
-    public long getId() {
+    @OneToMany
+    @JoinColumn(name="idUsuarioCadastro", referencedColumnName="IDUsuario")
+    private List<Cadastro> cadastros;
+
+    @OneToMany
+    @JoinColumn(name="idUsuarioAcesso", referencedColumnName="IDUsuario")
+    private List<Acesso> acessos;
+
+    public long getIdUsuario() {
         return idUsuario;
     }
 
-    public void setId(int id) {
-        this.idUsuario = id;
+    public void setIdUsuario(long idUsuario) {
+        this.idUsuario = idUsuario;
     }
 
     public String getNome() {
@@ -123,12 +134,26 @@ public class Usuario implements Serializable{
         this.celular = celular;
     }
 
+    public List<Cadastro> getCadastros() {
+        return cadastros;
+    }
+
+    public void setCadastros(List<Cadastro> cadastros) {
+        this.cadastros = cadastros;
+    }
+
+    public List<Acesso> getAcessos() {
+        return acessos;
+    }
+
+    public void setAcessos(List<Acesso> acessos) {
+        this.acessos = acessos;
+    }
+
     @Override
     public String toString() {
         return "Usuario [celular=" + celular + ", cidade=" + cidade + ", cpf=" + cpf + ", datanasc=" + datanasc
-                + ", email=" + email + ", endereco=" + endereco + ", id=" + idUsuario + ", nome=" + nome
-                + ", telefone="
-                + telefone + "]";
+                + ", email=" + email + ", endereco=" + endereco + ", idUsuario=" + idUsuario + ", nome=" + nome
+                + ", telefone=" + telefone + "]";
     }
-
 }

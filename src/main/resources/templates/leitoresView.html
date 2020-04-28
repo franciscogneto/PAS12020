@@ -27,14 +27,14 @@
                     </thead>
                     <tbody>
                         <tr th:each="leitor :${data.content}">
-                            <td th:text="${leitor.id}"></td>
+                            <td th:text="${leitor.idLeitor}"></td>
                             <td class="text-truncate" style="max-width: 100px;" th:text="${leitor.local}"></td>
                             <td th:text="${leitor.capacidade}"></td>
                             <td th:text="${leitor.fabricante}"></td>
                             <td th:text="${leitor.senha}"></td>
                             <td> 
-                                <a th:href="@{findOneLeitor/(id=${leitor.id})}" class="btn btn-primary eBtn">Edit</a>
-                                <a th:href="@{deleteLeitor/(id=${leitor.id})}" class="btn btn-danger delBtn">Delete</a>     
+                                <a th:href="@{findOneLeitor/(id=${leitor.idLeitor})}" class="btn btn-primary eBtn">Edit</a>
+                                <a th:href="@{deleteLeitor/(id=${leitor.idLeitor})}" class="btn btn-danger delBtn">Delete</a>     
                             </td>
                         </tr>
 
@@ -78,8 +78,8 @@
                         </div>
                         <div class="modal-body">
                             <div class="form-group">
-                                <label for="id" class="col-form-label">ID:</label>
-                                <input type="text" class="form-control" id="id" name="id" value="" readonly />
+                                <label for="idLeitor" class="col-form-label">ID:</label>
+                                <input type="text" class="form-control" id="idLeitor" name="idLeitor" value="" readonly />
                             </div>
                             <div class="form-group">
                                 <label for="local" class="col-form-label">Local:</label>
