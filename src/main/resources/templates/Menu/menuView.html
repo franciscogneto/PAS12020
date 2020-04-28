@@ -20,54 +20,19 @@
             <a th:href="@{acessos}" class="btn btn-primary btn-lg btn-block aBtn" role="button">ACESSOS</a>
             <div class="col text-center">
                 <a th:href="@{/app/login}" class="btn btn-secundary loBtn" role="button">LOG OUT</a>
-                <a th:href class="btn btn-secundary eBtn" role="button">EDIT LOGIN</a>
+                <a th:href="@{findMasterAtual}" class="btn btn-secundary eBtn" role="button">EDIT LOGIN</a>
             </div>
             <img width="180px" height="150px" th:src="@{/logo.png}"/>
-        </div>
-
-        <div th:if="${verify}">
-           <div data-toggle="modal fade" data-target="#newModal"></div>
         </div>
     </div>
 
     <div class="editForm">
-        <form th:action="@{/app/verifyLogin}" method="post">
+        <form th:action="@{/app/updateMaster}" method="post">
             <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="editModalLabel">Verify</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <div class="form-group">
-                            <label for="usuario" class="col-form-label">Usuario:</label>
-                            <input type="text" class="form-control" id="usuario" name="usuario" value="" />
-                        </div>
-                        <div class="form-group">
-                            <label for="password" class="col-form-label">Password:</label>
-                            <input type="text" class="form-control" id="password" name="password" value="" />
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <input type="submit" class="btn btn-primary" value="Verify" />
-                    </div>
-                </div>
-                </div>
-            </div>
-        </form>
-    </div>
-
-    <div class="newForm">
-        <form th:action="@{/app/updateMaster}" method="post">
-            <div class="modal fade" id="newModal" tabindex="-1" role="dialog" aria-labelledby="newModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="newModalLabel">Update</h5>
+                        <h5 class="modal-title" id="editModalLabel">Update</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -75,7 +40,7 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label for="id" class="col-form-label">ID:</label>
-                            <input type="text" class="form-control" id="id" name="id" value="" />
+                            <input type="text" class="form-control" id="id" name="id" value="" readonly />
                         </div>
                         <div class="form-group">
                             <label for="usuario" class="col-form-label">New Usuario:</label>
@@ -83,7 +48,7 @@
                         </div>
                         <div class="form-group">
                             <label for="password" class="col-form-label">New Password:</label>
-                            <input type="text" class="form-control" id="password" name="password" value="" />
+                            <input type="password" class="form-control" id="password" name="password" value="" />
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -95,8 +60,5 @@
             </div>
         </form>
     </div>
-        
-
-    
 </body>
 </html>

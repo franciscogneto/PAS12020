@@ -8,21 +8,13 @@ $(document).ready(function(){
 
         event.preventDefault();
         var href = $(this).attr('href');
-        var text = $(this).text();
 
-        if(text=='EDIT '){
+        $.get(href, function(master, status){
+            $('.editForm #id').val(master.id);
             $('.editForm #usuario').val('');
             $('.editForm #password').val('');
-            
-            $('.editForm #editModal').modal();
-        }else{
-            $.get(href, function(master, status){
-                $('.editForm #id').val('');
-                $('.newForm #usuario').val('');
-                $('.newForm #password').val('');
-            });
-
-            $('.newForm #newModal').modal();
-        }
+        });
+   
+        $('.editForm #editModal').modal();
     });
  });

@@ -1,6 +1,6 @@
 ----------------------------------------------------------------
-Tue Apr 28 00:46:45 BRT 2020:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0171-bee4-e8ec-000006b4a598 
+Tue Apr 28 16:16:46 BRT 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0171-c238-5fd7-000006f3a380 
 on database directory C:\Users\vinic\Documents\FACENS\5 Semestre\PA V\Projeto\PAS12020\dbfingeraccess with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418 
 Loaded from file:/C:/Users/vinic/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Oracle Corporation
@@ -12,9 +12,9 @@ os.version=10.0
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
 ----------------------------------------------------------------
-Tue Apr 28 00:56:36 BRT 2020:
-Shutting down instance a816c00e-0171-bee4-e8ec-000006b4a598 on database directory C:\Users\vinic\Documents\FACENS\5 Semestre\PA V\Projeto\PAS12020\dbfingeraccess with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418 
-Tue Apr 28 00:56:36 BRT 2020 Thread[Thread-20,5,main] Cleanup action starting
+Tue Apr 28 16:20:23 BRT 2020:
+Shutting down instance a816c00e-0171-c238-5fd7-000006f3a380 on database directory C:\Users\vinic\Documents\FACENS\5 Semestre\PA V\Projeto\PAS12020\dbfingeraccess with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418 
+Tue Apr 28 16:20:23 BRT 2020 Thread[Thread-22,5,main] Cleanup action starting
 ERROR XBM0I: Directory dbfingeraccess cannot be removed.
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
@@ -34,7 +34,7 @@ ERROR XBM0I: Directory dbfingeraccess cannot be removed.
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:830)
 Cleanup action completed
-Tue Apr 28 00:56:36 BRT 2020 Thread[Thread-20,5,main] Cleanup action starting
+Tue Apr 28 16:20:23 BRT 2020 Thread[Thread-22,5,main] Cleanup action starting
 ERROR XBM0I: Directory dbfingeraccess cannot be removed.
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
@@ -55,8 +55,8 @@ ERROR XBM0I: Directory dbfingeraccess cannot be removed.
 	at java.base/java.lang.Thread.run(Thread.java:830)
 Cleanup action completed
 ----------------------------------------------------------------
-Tue Apr 28 00:56:37 BRT 2020:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance e1734037-0171-bee4-e8ec-000006b4a598 
+Tue Apr 28 16:20:24 BRT 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance 35924132-0171-c238-5fd7-000006f3a380 
 on database directory C:\Users\vinic\Documents\FACENS\5 Semestre\PA V\Projeto\PAS12020\dbfingeraccess with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418 
 Loaded from file:/C:/Users/vinic/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Oracle Corporation
@@ -68,9 +68,9 @@ os.version=10.0
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''
 ----------------------------------------------------------------
-Tue Apr 28 00:59:02 BRT 2020:
-Shutting down instance e1734037-0171-bee4-e8ec-000006b4a598 on database directory C:\Users\vinic\Documents\FACENS\5 Semestre\PA V\Projeto\PAS12020\dbfingeraccess with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418 
-Tue Apr 28 00:59:03 BRT 2020 Thread[Thread-36,5,main] Cleanup action starting
+Tue Apr 28 16:20:36 BRT 2020:
+Shutting down instance 35924132-0171-c238-5fd7-000006f3a380 on database directory C:\Users\vinic\Documents\FACENS\5 Semestre\PA V\Projeto\PAS12020\dbfingeraccess with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418 
+Tue Apr 28 16:20:36 BRT 2020 Thread[Thread-38,5,main] Cleanup action starting
 ERROR XBM0I: Directory dbfingeraccess cannot be removed.
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
@@ -90,7 +90,7 @@ ERROR XBM0I: Directory dbfingeraccess cannot be removed.
 	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
 	at java.base/java.lang.Thread.run(Thread.java:830)
 Cleanup action completed
-Tue Apr 28 00:59:03 BRT 2020 Thread[Thread-36,5,main] Cleanup action starting
+Tue Apr 28 16:20:36 BRT 2020 Thread[Thread-38,5,main] Cleanup action starting
 ERROR XBM0I: Directory dbfingeraccess cannot be removed.
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
 	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
@@ -111,8 +111,176 @@ ERROR XBM0I: Directory dbfingeraccess cannot be removed.
 	at java.base/java.lang.Thread.run(Thread.java:830)
 Cleanup action completed
 ----------------------------------------------------------------
-Tue Apr 28 00:59:04 BRT 2020:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance bbbd0058-0171-bee4-e8ec-000006b4a598 
+Tue Apr 28 16:20:37 BRT 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance f5fb814d-0171-c238-5fd7-000006f3a380 
+on database directory C:\Users\vinic\Documents\FACENS\5 Semestre\PA V\Projeto\PAS12020\dbfingeraccess with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418 
+Loaded from file:/C:/Users/vinic/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=13.0.2+8
+user.dir=c:\Users\vinic\Documents\FACENS\5 Semestre\PA V\Projeto\PAS12020
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Tue Apr 28 16:20:55 BRT 2020:
+Shutting down instance f5fb814d-0171-c238-5fd7-000006f3a380 on database directory C:\Users\vinic\Documents\FACENS\5 Semestre\PA V\Projeto\PAS12020\dbfingeraccess with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418 
+Tue Apr 28 16:20:56 BRT 2020 Thread[Thread-54,5,main] Cleanup action starting
+ERROR XBM0I: Directory dbfingeraccess cannot be removed.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.removePersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection$6.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.apache.derby.impl.jdbc.EmbedConnection.removePersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$LoginCallable.call(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$LoginCallable.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+Cleanup action completed
+Tue Apr 28 16:20:56 BRT 2020 Thread[Thread-54,5,main] Cleanup action starting
+ERROR XBM0I: Directory dbfingeraccess cannot be removed.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.removePersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection$6.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.apache.derby.impl.jdbc.EmbedConnection.removePersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$LoginCallable.call(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$LoginCallable.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+Cleanup action completed
+----------------------------------------------------------------
+Tue Apr 28 16:20:56 BRT 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance 771b0168-0171-c238-5fd7-000006f3a380 
+on database directory C:\Users\vinic\Documents\FACENS\5 Semestre\PA V\Projeto\PAS12020\dbfingeraccess with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418 
+Loaded from file:/C:/Users/vinic/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=13.0.2+8
+user.dir=c:\Users\vinic\Documents\FACENS\5 Semestre\PA V\Projeto\PAS12020
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Tue Apr 28 16:21:23 BRT 2020:
+Shutting down instance 771b0168-0171-c238-5fd7-000006f3a380 on database directory C:\Users\vinic\Documents\FACENS\5 Semestre\PA V\Projeto\PAS12020\dbfingeraccess with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418 
+Tue Apr 28 16:21:23 BRT 2020 Thread[Thread-70,5,main] Cleanup action starting
+ERROR XBM0I: Directory dbfingeraccess cannot be removed.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.removePersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection$6.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.apache.derby.impl.jdbc.EmbedConnection.removePersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$LoginCallable.call(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$LoginCallable.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+Cleanup action completed
+Tue Apr 28 16:21:23 BRT 2020 Thread[Thread-70,5,main] Cleanup action starting
+ERROR XBM0I: Directory dbfingeraccess cannot be removed.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.removePersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection$6.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.apache.derby.impl.jdbc.EmbedConnection.removePersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$LoginCallable.call(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$LoginCallable.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+Cleanup action completed
+----------------------------------------------------------------
+Tue Apr 28 16:21:24 BRT 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance e8f0c183-0171-c238-5fd7-000006f3a380 
+on database directory C:\Users\vinic\Documents\FACENS\5 Semestre\PA V\Projeto\PAS12020\dbfingeraccess with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418 
+Loaded from file:/C:/Users/vinic/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
+java.vendor=Oracle Corporation
+java.runtime.version=13.0.2+8
+user.dir=c:\Users\vinic\Documents\FACENS\5 Semestre\PA V\Projeto\PAS12020
+os.name=Windows 10
+os.arch=amd64
+os.version=10.0
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Tue Apr 28 16:21:32 BRT 2020:
+Shutting down instance e8f0c183-0171-c238-5fd7-000006f3a380 on database directory C:\Users\vinic\Documents\FACENS\5 Semestre\PA V\Projeto\PAS12020\dbfingeraccess with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418 
+Tue Apr 28 16:21:33 BRT 2020 Thread[Thread-86,5,main] Cleanup action starting
+ERROR XBM0I: Directory dbfingeraccess cannot be removed.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.removePersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection$6.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.apache.derby.impl.jdbc.EmbedConnection.removePersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$LoginCallable.call(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$LoginCallable.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+Cleanup action completed
+Tue Apr 28 16:21:33 BRT 2020 Thread[Thread-86,5,main] Cleanup action starting
+ERROR XBM0I: Directory dbfingeraccess cannot be removed.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.removePersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection$6.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.apache.derby.impl.jdbc.EmbedConnection.removePersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$1.run(Unknown Source)
+	at java.base/java.security.AccessController.doPrivileged(AccessController.java:554)
+	at org.apache.derby.jdbc.InternalDriver.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$LoginCallable.call(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver$LoginCallable.call(Unknown Source)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:830)
+Cleanup action completed
+----------------------------------------------------------------
+Tue Apr 28 16:21:34 BRT 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance 7b7cc19e-0171-c238-5fd7-000006f3a380 
 on database directory C:\Users\vinic\Documents\FACENS\5 Semestre\PA V\Projeto\PAS12020\dbfingeraccess with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418 
 Loaded from file:/C:/Users/vinic/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Oracle Corporation

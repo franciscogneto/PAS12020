@@ -109,6 +109,11 @@ public class GeralService {
         return masterRepository.findAll();
     }
 
+    public Master getMasterAtual() {
+
+        return masterRepository.findByUsuario(usuarioAtual);
+    }
+
     /**
      * Método responsável em retornar se o login existe ou não no Banco de Dados
      * 
@@ -130,28 +135,9 @@ public class GeralService {
     /**
      * Método responsável em cadastrar um novo login master no Banco de Dados
     */
-    public void addMaster(Master loginMaster)
+    public void saveMaster(Master loginMaster)
     {
+        usuarioAtual = loginMaster.getUsuario();
         masterRepository.save(loginMaster);
-    }
-
-    /**
-     * Método responsável em retornar se o login atual é o mesmo recebido por parâmetro
-     * 
-     * @param Master
-     * @return True se o login estiver correto ou False caso não esteja
-     */
-    public boolean confereLoginAtual(Master master) {
-
-        if(master.getUsuario().equals(usuarioAtual))
-        {
-            for (Master aux : masterRepository.findAll()) {
-                if (aux.getUsuario().equals(master.getUsuario()) && aux.getPassword().equals(master.getPassword()))
-                {
-                    return true;              
-                }
-            }
-        } 
-        return false;
     }
 }

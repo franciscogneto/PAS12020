@@ -1,4 +1,5 @@
 package com.example.fingeraccess.controller;
+
 import java.util.Optional;
 import com.example.fingeraccess.entidade.Cadastro;
 import com.example.fingeraccess.entidade.IdCadastro;
@@ -287,27 +288,21 @@ public class GeralController {
         return mv;
     }
 
-    //Valida o login e senha inseridos
-    @PostMapping("/verifyLogin")
-    public ModelAndView verifyLogin(@ModelAttribute Master master) {
-
-        ModelAndView mv = new ModelAndView("redirect:/app/menu");
-
-        if (service.confereLoginAtual(master))
-            mv.addObject("verify", true);
-        else {
-            mv.addObject("verify", false);
-        }
-
-        return mv;
-    }
-
     @PostMapping("/updateMaster")
     public String updateMaster(Master master) {
 
-        service.addMaster(master);
+        service.saveMaster(master);
 
         return "redirect:/app/menu";
+    }
+
+    @GetMapping("/findMasterAtual")
+    @ResponseBody
+    public Master findMasterAtual() {
+
+        Master masterAtual = service.getMasterAtual();
+
+        return masterAtual;
     }
 
     @GetMapping("/menu")
