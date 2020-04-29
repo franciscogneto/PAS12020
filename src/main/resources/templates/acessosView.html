@@ -19,15 +19,19 @@
                         <tr>
                             <th class="text-center">NÚMERO</th>
                             <th class="text-center">ID LEITOR</th>
+                            <th class="text-center">LOCAL LEITOR</th>
                             <th class="text-center">ID USUÁRIO</th>
+                            <th class="text-center">NOME USUÁRIO</th>
                             <th class="text-center">DATA DO ACESSO</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="acesso :${data.content}">
                             <td th:text="${acesso.numAcesso}"></td>
-                            <td th:text="${acesso.leitorBiometrico.id}"></td>
-                            <td th:text="${acesso.usuario.id}"></td>
+                            <td th:text="${acesso.leitorBiometrico.idLeitor}"></td>
+                            <td class="text-truncate" style="max-width: 100px;" th:text="${acesso.leitorBiometrico.local}"></td>
+                            <td th:text="${acesso.usuario.idUsuario}"></td>
+                            <td class="text-truncate" style="max-width: 250px;" th:text="${acesso.usuario.nome}"></td>
                             <td th:text="${acesso.dataAcesso}"></td>
                         </tr>
 

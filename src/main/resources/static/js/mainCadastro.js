@@ -13,8 +13,8 @@ $(document).ready(function(){
         if(text=='Edit'){
             $.get(href, function(cadastro, status){
                 $('.editnewForm #idCadastro').val(cadastro.idCadastro);
-                $('.editnewForm #idLeitorCadastro').val(cadastro.leitorBiometrico.id);
-                $('.editnewForm #idUsuario').val(cadastro.usuario.id);
+                $('.editnewForm #leitorBiometrico.idLeitor').val(cadastro.leitorBiometrico.idLeitor);
+                $('.editnewForm #usuario.idUsuario').val(cadastro.usuario.idUsuario);
                 $('.editnewForm #dataCadastro').val(cadastro.dataCadastro);
             });
 

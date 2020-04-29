@@ -20,16 +20,20 @@
                         <tr>
                             <th class="text-center">ID</th>
                             <th class="text-center">ID LEITOR</th>
+                            <th class="text-center">LOCAL LEITOR</th>
                             <th class="text-center">ID USUÁRIO</th>
+                            <th class="text-center">NOME USUÁRIO</th>
                             <th class="text-center">DATA</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr th:each="cadastro :${data.content}">
                             <td th:text="${cadastro.idCadastro}"></td>
-                            <td th:text="${cadastro.leitorBiometrico.id}"></td>
-                            <td th:text="${cadastro.usuario.id}"></td>
-                            <td th:text="${cadastro.dataCadastro}"></td> 
+                            <td th:text="${cadastro.leitorBiometrico.idLeitor}"></td>
+                            <td class="text-truncate" style="max-width: 100px;" th:text="${cadastro.leitorBiometrico.local}"></td>
+                            <td th:text="${cadastro.usuario.idUsuario}"></td>
+                            <td class="text-truncate" style="max-width: 250px;" th:text="${cadastro.usuario.nome}"></td>
+                            <td th:text="${cadastro.dataCadastro}"></td>
                             <td> 
                                 <a th:href="@{findOneCadastro/(id=${cadastro.idCadastro})}" class="btn btn-primary eBtn">Edit</a>
                                 <a th:href="@{deleteCadastro/(id=${cadastro.idCadastro})}" class="btn btn-danger delBtn">Delete</a>     
@@ -80,12 +84,12 @@
                                 <input type="text" class="form-control" id="idCadastro" name="idCadastro" value="" />
                             </div>
                             <div class="form-group">
-                                <label for="idLeitorCadastro" class="col-form-label">ID Leitor:</label>
-                                <input type="text" class="form-control" id="idLeitorCadastro" name="idLeitorCadastro" value="" />
+                                <label for="leitorBiometrico.idLeitor" class="col-form-label">ID Leitor:</label>
+                                <input type="text" class="form-control" id="leitorBiometrico.idLeitor" name="leitorBiometrico.idLeitor" value="" />
                             </div>
                             <div class="form-group">
-                                <label for="idUsuario" class="col-form-label">ID Usuário:</label>
-                                <input type="text" class="form-control" id="idUsuario" name="idUsuario" value="" />
+                                <label for="usuario.idUsuario" class="col-form-label">ID Usuário:</label>
+                                <input type="text" class="form-control" id="usuario.idUsuario" name="usuario.idUsuario" value="" />
                             </div>
                             <div class="form-group">
                                 <label for="dataCadastro" class="col-form-label">Data da Permissão:</label>
