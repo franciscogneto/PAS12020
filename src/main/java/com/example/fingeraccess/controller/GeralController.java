@@ -282,7 +282,7 @@ public class GeralController {
         if (service.confereLogin(master))
             mv.setViewName("/Menu/menuView");
         else {
-            mv.setViewName("login/loginView");
+            mv.setViewName("login/loginErrorView");
         }
 
         return mv;
