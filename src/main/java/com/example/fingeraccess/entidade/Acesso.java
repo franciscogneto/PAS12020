@@ -11,6 +11,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="Acesso")
 public class Acesso implements Serializable{
@@ -30,12 +32,14 @@ public class Acesso implements Serializable{
     //@JoinColumn(name="idLeitorCadastroAcesso", referencedColumnName="idLeitorCadastro")
     //private Cadastro cadastro;
 
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name="idLeitorAcesso", referencedColumnName="IDLeitor")
+    @JoinColumn(name="idLeitorAcesso")
     private LeitorBiometrico leitorBiometrico;
 
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name="idUsuarioAcesso", referencedColumnName="IDUsuario")
+    @JoinColumn(name="idUsuarioAcesso")
     private Usuario usuario;
     
     @Column(name="dataAcesso", nullable=false, unique=false)

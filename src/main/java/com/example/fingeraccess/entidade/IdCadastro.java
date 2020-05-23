@@ -2,9 +2,6 @@ package com.example.fingeraccess.entidade;
 
 import java.io.Serializable;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
 public class IdCadastro implements Serializable {
 
     /**
@@ -13,17 +10,15 @@ public class IdCadastro implements Serializable {
     private static final long serialVersionUID = 1L;
 
 	private long idCadastro;
-	
-	@ManyToOne
-    @JoinColumn(name="idLeitorCadastro", referencedColumnName="IDLeitor")
-    private LeitorBiometrico leitorBiometrico;
+
+    private long idLeitorBiometrico;
  
     public IdCadastro() {
     }
 
-    public IdCadastro(long idCadastro, LeitorBiometrico leitorBiometrico) {
+    public IdCadastro(long idCadastro, long idLeitorBiometrico) {
         this.idCadastro = idCadastro;
-        this.leitorBiometrico = leitorBiometrico;
+        this.idLeitorBiometrico = idLeitorBiometrico;
     }
 
 	@Override
@@ -31,7 +26,7 @@ public class IdCadastro implements Serializable {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + (int) (idCadastro ^ (idCadastro >>> 32));
-		result = prime * result + ((leitorBiometrico == null) ? 0 : leitorBiometrico.hashCode());
+		result = prime * result + (int) (idLeitorBiometrico ^ (idLeitorBiometrico >>> 32));
 		return result;
 	}
 
@@ -46,10 +41,7 @@ public class IdCadastro implements Serializable {
 		IdCadastro other = (IdCadastro) obj;
 		if (idCadastro != other.idCadastro)
 			return false;
-		if (leitorBiometrico == null) {
-			if (other.leitorBiometrico != null)
-				return false;
-		} else if (!leitorBiometrico.equals(other.leitorBiometrico))
+		if (idLeitorBiometrico != other.idLeitorBiometrico)
 			return false;
 		return true;
 	}

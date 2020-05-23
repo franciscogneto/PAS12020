@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * LeitorBiometrico INSERT INTO LEITOR_BIOMETRICO VALUES( 1000, 125, 'Voktta',  'Principal', 'adm123')
  */
@@ -42,12 +44,14 @@ public class LeitorBiometrico implements Serializable{
     @Column(name="senha", nullable=false, unique=false)
     private String senha;
 
+    @JsonIgnore
     @OneToMany
-    @JoinColumn(name="idLeitorCadastro", referencedColumnName="IDLeitor")
+    @JoinColumn(name="idLeitorCadastro")
     private List<Cadastro> cadastros;
 
+    @JsonIgnore
     @OneToMany
-    @JoinColumn(name="idLeitorAcesso", referencedColumnName="IDLeitor")
+    @JoinColumn(name="idLeitorAcesso")
     private List<Acesso> acessos;
 
     public long getIdLeitor() {

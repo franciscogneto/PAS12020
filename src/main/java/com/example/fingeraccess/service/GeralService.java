@@ -85,6 +85,7 @@ public class GeralService {
     */
     public void addCadastro(Cadastro cadastro)
     {
+        cadastro.setIdLeitorBiometrico(cadastro.getLeitorBiometrico().getIdLeitor());
         cadastroRepository.save(cadastro);
     }
 

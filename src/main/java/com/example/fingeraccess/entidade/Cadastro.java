@@ -9,6 +9,8 @@ import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @IdClass(IdCadastro.class)
 public class Cadastro implements Serializable{
@@ -19,14 +21,20 @@ public class Cadastro implements Serializable{
     private static final long serialVersionUID = 1L;
 
     @Id
-    @Column(name="IDCadastro", nullable=false, unique=true)
+    @Column(name="IDCadastro", nullable=false, unique=false)
     private long idCadastro;
 
     @Id
+    private long idLeitorBiometrico;
+
+    @JsonIgnore
+    @ManyToOne
+    @JoinColumn(name="idLeitorCadastro")
     private LeitorBiometrico leitorBiometrico;
 
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name="idUsuarioCadastro", referencedColumnName="IDUsuario")
+    @JoinColumn(name="idUsuarioCadastro")
     private Usuario usuario;
   
     @Column(name="dataCadastro", nullable=false, unique=false)
@@ -35,18 +43,20 @@ public class Cadastro implements Serializable{
     public Cadastro() {
     }
 
-    public Cadastro(LeitorBiometrico leitorBiometrico, Usuario usuario, String dataCadastro) {
-        this.leitorBiometrico = leitorBiometrico;
-        this.usuario = usuario;
-        this.dataCadastro = dataCadastro;
-    }
-
     public long getIdCadastro() {
         return idCadastro;
     }
 
     public void setIdCadastro(long idCadastro) {
         this.idCadastro = idCadastro;
+    }
+
+    public long getIdLeitorBiometrico() {
+        return idLeitorBiometrico;
+    }
+
+    public void setIdLeitorBiometrico(long idLeitorBiometrico) {
+        this.idLeitorBiometrico = idLeitorBiometrico;
     }
 
     public LeitorBiometrico getLeitorBiometrico() {
@@ -75,7 +85,7 @@ public class Cadastro implements Serializable{
 
     @Override
     public String toString() {
-        return "Cadastro [dataCadastro=" + dataCadastro + ", idCadastro=" + idCadastro + ", leitorBiometrico="
-                + leitorBiometrico + ", usuario=" + usuario + "]";
+        return "Cadastro [dataCadastro=" + dataCadastro + ", idCadastro=" + idCadastro + ", idLeitorBiometrico="
+                + idLeitorBiometrico + ", leitorBiometrico=" + leitorBiometrico + ", usuario=" + usuario + "]";
     }
 }

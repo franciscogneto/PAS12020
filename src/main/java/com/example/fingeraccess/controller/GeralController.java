@@ -190,9 +190,13 @@ public class GeralController {
     @GetMapping("/cadastros")
     public String showCadastrosPage(Model model, @RequestParam(defaultValue = "0") int page) {
 
+        model.addAttribute("cadastro",  new Cadastro());
         model.addAttribute("data", cadastroRep.findAll(PageRequest.of(page, 4)));
 
         model.addAttribute("currentPage", page);
+
+        model.addAttribute("leitores", leitorRep.findAll());
+        model.addAttribute("usuarios", usuarioRep.findAll());
 
         return "cadastrosView";
     }
@@ -215,9 +219,8 @@ public class GeralController {
 
     @GetMapping("/findOneCadastro")
     @ResponseBody
-    public Optional<Cadastro> findOneCadastro(IdCadastro idCadastro) {
-
-        return cadastroRep.findById(idCadastro);
+    public Cadastro findOneCadastro(Long idCadastro, Long idLeitorBiometrico) {
+        return cadastroRep.findByIdCadastroAndIdLeitorBiometrico(idCadastro, idLeitorBiometrico);
     }
     
     /*@GetMapping("/cadastros")

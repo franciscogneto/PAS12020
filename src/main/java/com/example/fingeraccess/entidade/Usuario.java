@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * Usuario INSERT INTO USUARIO VALUES(0,  '15991247823', 'Sorocaba', '48999603873',  '2000-06-08', 'vinicius.souzacss@gmail.com', 'Rua Pedro Alvares Cabral, n.522',  'VINÍCIUS', '33885098')
  */
@@ -54,12 +56,14 @@ public class Usuario implements Serializable{
     @Column(name="celular", nullable=false, unique=false)
     private String celular;
 
+    @JsonIgnore
     @OneToMany
-    @JoinColumn(name="idUsuarioCadastro", referencedColumnName="IDUsuario")
+    @JoinColumn(name="idUsuarioCadastro")
     private List<Cadastro> cadastros;
 
+    @JsonIgnore
     @OneToMany
-    @JoinColumn(name="idUsuarioAcesso", referencedColumnName="IDUsuario")
+    @JoinColumn(name="idUsuarioAcesso")
     private List<Acesso> acessos;
 
     public long getIdUsuario() {
