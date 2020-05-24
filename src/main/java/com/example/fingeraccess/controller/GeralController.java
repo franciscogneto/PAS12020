@@ -254,7 +254,7 @@ public class GeralController {
     @PostMapping("/saveCadastro")
     public String saveCadastro(RedirectAttributes redirAttr, Cadastro cadastro) {
 
-        if(cadastro.getIdCadastro() > 0 && !cadastro.getDataCadastro().trim().isEmpty())
+        if(cadastro.getIdCadastro() >= 0 && !cadastro.getDataCadastro().trim().isEmpty())
         {
             service.addCadastro(cadastro);
         }
