@@ -1,21 +1,11 @@
 ----------------------------------------------------------------
-<<<<<<< HEAD
-Sun May 24 19:27:15 BRT 2020:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0172-48cc-1a5e-000006bad020 
+Sun May 24 19:44:25 BRT 2020:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0172-48db-d39d-000007317498 
 on database directory C:\Users\vinic\Documents\FACENS\5 Semestre\PA V\Projeto\PAS12020\dbfingeraccess with class loader jdk.internal.loader.ClassLoaders$AppClassLoader@2626b418 
 Loaded from file:/C:/Users/vinic/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
 java.vendor=Oracle Corporation
 java.runtime.version=13.0.2+8
 user.dir=c:\Users\vinic\Documents\FACENS\5 Semestre\PA V\Projeto\PAS12020
-=======
-Sun May 24 19:25:32 BRT 2020:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.14.2.0 - (1828579): instance a816c00e-0172-48ca-8846-00000f3fe5b0 
-on database directory C:\Users\Francisco\Desktop\PAS12020-1\dbfingeraccess with class loader sun.misc.Launcher$AppClassLoader@764c12b6 
-Loaded from file:/C:/Users/Francisco/.m2/repository/org/apache/derby/derby/10.14.2.0/derby-10.14.2.0.jar
-java.vendor=Oracle Corporation
-java.runtime.version=1.8.0_181-b13
-user.dir=c:\Users\Francisco\Desktop\PAS12020-1
->>>>>>> 13407abd4ea85074169075f6cad5df816aa14e98
 os.name=Windows 10
 os.arch=amd64
 os.version=10.0

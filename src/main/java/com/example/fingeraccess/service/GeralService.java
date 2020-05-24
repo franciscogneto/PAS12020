@@ -47,8 +47,16 @@ public class GeralService {
     */
     public void addUsuario(Usuario usuario)
     {
+        if(usuarioRepository.existsById(usuario.getIdUsuario()))
+        {
+            usuario.setCadastros(usuarioRepository.findById(usuario.getIdUsuario()).get().getCadastros());
+            usuario.setAcessos(usuarioRepository.findById(usuario.getIdUsuario()).get().getAcessos());
+        }
+
         usuarioRepository.save(usuario);
     }
+
+    
 
     // -------------------- Leitor ------------------------------------------
 
@@ -66,6 +74,12 @@ public class GeralService {
     */
     public void addLeitorBiometrico(LeitorBiometrico leitorBiometrico)
     {
+        if(leitorRepository.existsById(leitorBiometrico.getIdLeitor()))
+        {
+            leitorBiometrico.setCadastros(leitorRepository.findById(leitorBiometrico.getIdLeitor()).get().getCadastros());
+            leitorBiometrico.setAcessos(leitorRepository.findById(leitorBiometrico.getIdLeitor()).get().getAcessos());
+        }
+
         leitorRepository.save(leitorBiometrico);
     }
 
