@@ -57,6 +57,7 @@
                             <td th:text="${leitor.fabricante}"></td>
                             <td th:text="${leitor.senha}"></td>
                             <td> 
+                                <a th:href="@{'/app/detalhesLeitor/' + ${leitor.idLeitor}}" class="btn btn-success detBtn">Detalhes</a>
                                 <a th:href="@{findOneLeitor/(id=${leitor.idLeitor})}" class="btn btn-primary eBtn">Edit</a>
                                 <a th:href="@{deleteLeitor/(id=${leitor.idLeitor})}" class="btn btn-danger delBtn">Delete</a>     
                             </td>
@@ -71,6 +72,7 @@
                     <button class="btn btn-success nBtn">New</button>
                 </div>
                 <div th:if="${data.totalPages == 0}">
+                    <div class="text font-weight-bold">PAGES</div>
                     <ul class="nav nav-pills">
                         <li class="nav-item" th:each="i : ${#numbers.sequence(0,data.totalPages)}">
                             <a th:href="@{/app/leitores(page=${i})}" th:text="${i}" class="nav-link"
@@ -79,6 +81,7 @@
                     </ul>
                 </div>
                 <div th:unless="${data.totalPages == 0}">
+                    <div class="text font-weight-bold">PAGES</div>
                     <ul class="nav nav-pills">
                         <li class="nav-item" th:each="i : ${#numbers.sequence(0,data.totalPages-1)}">
                             <a th:href="@{/app/leitores(page=${i})}" th:text="${i}" class="nav-link"

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/styleForm.css"/>
+</head>
+<body>
+
+    <div class="container">
+            <div class="card">
+                <div class="card-block">
+                    <div class="text-xl-center font-weight-bold">PERMISSÃO DE ACESSO</div>
+                    <br>
+                    <table class="table table-hover text-center">
+                        <thead>
+                            <tr>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">ID LEITOR</th>
+                                <th class="text-center">LOCAL LEITOR</th>
+                                <th class="text-center">ID USUÁRIO</th>
+                                <th class="text-center">NOME USUÁRIO</th>
+                                <th class="text-center">DATA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td th:text="${cadastro.idCadastro}"></td>
+                                <td th:text="${cadastro.leitorBiometrico.idLeitor}"></td>
+                                <td class="text-truncate" style="max-width: 100px;" th:text="${cadastro.leitorBiometrico.local}"></td>
+                                <td th:text="${cadastro.usuario.idUsuario}"></td>
+                                <td class="text-truncate" style="max-width: 250px;" th:text="${cadastro.usuario.nome}"></td>
+                                <td th:text="${cadastro.dataCadastro}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                
+                    <br>
+                    <br>
+                    <div class="text-xl-center font-weight-bold">USUÁRIO</div>
+                    <br>
+
+                    <table class="table table-hover text-center">
+                        <thead>
+                            <tr>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">NOME</th>
+                                <th class="text-center">CPF</th>
+                                <th class="text-center">DATA DE NASCIMENTO</th>      
+                                <th class="text-center">EMAIL</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <td th:text="${cadastro.usuario.idUsuario}"></td>
+                            <td class="text-truncate" style="max-width: 250px;" th:text="${cadastro.usuario.nome}"></td>
+                            <td th:text="${cadastro.usuario.cpf}"></td>
+                            <td th:text="${cadastro.usuario.datanasc}"></td>
+                            <td class="text-truncate" style="max-width: 250px;" th:text="${cadastro.usuario.email}"></td>
+                            <td><a th:href="@{'/app/detalhesUsuario/' + ${cadastro.usuario.idUsuario}}" class="btn btn-primary detBtn">Detalhes</a></td>
+                        </tbody>
+                    </table>
+
+                    <br>
+                    <br>
+                    <div class="text-xl-center font-weight-bold">LEITOR BIOMÉTRICO</div>
+                    <br>
+
+                    <table class="table table-hover text-center">
+                        <thead>
+                            <tr>
+                                <th class="text-center">ID</th>
+                                <th class="text-center">LOCAL</th>
+                                <th class="text-center">CAPACIDADE</th>
+                                <th class="text-center">FABRICANTE</th>
+                                <th class="text-center">SENHA</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <td th:text="${cadastro.leitorBiometrico.idLeitor}"></td>
+                            <td class="text-truncate" style="max-width: 100px;" th:text="${cadastro.leitorBiometrico.local}"></td>
+                            <td th:text="${cadastro.leitorBiometrico.capacidade}"></td>
+                            <td th:text="${cadastro.leitorBiometrico.fabricante}"></td>
+                            <td th:text="${cadastro.leitorBiometrico.senha}"></td>
+                            <td><a th:href="@{'/app/detalhesLeitor/' + ${cadastro.leitorBiometrico.idLeitor}}" class="btn btn-primary detBtn">Detalhes</a></td>
+                        </tbody>
+                    </table>
+
+                    <hr/>
+                    <div class="col text-center">
+                        <a th:href="@{/app/menu}" method="post" class="btn btn-danger rBtn" role="button">Menu</a>
+                        <a th:href="@{/app/cadastros}" method="post" class="btn btn-danger rBtn" role="button">Return</a>
+                    </div>
+                </div>
+            </div>
+    </div>
+    
+</body>
+</html>

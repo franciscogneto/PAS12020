@@ -37,6 +37,7 @@
                             <td th:text="${acesso.usuario.idUsuario}"></td>
                             <td class="text-truncate" style="max-width: 250px;" th:text="${acesso.usuario.nome}"></td>
                             <td th:text="${acesso.dataAcesso}"></td>
+                            <td> <a th:href="@{'/app/detalhesAcesso/' + ${acesso.numAcesso}}" class="btn btn-success detBtn">Detalhes</a> </td>
                         </tr>
 
                     </tbody>
@@ -47,6 +48,7 @@
                     <a th:href="@{/app/menu}" method="post" class="btn btn-danger rBtn" role="button">Return</a>
                 </div>
                 <div th:if="${data.totalPages == 0}">
+                    <div class="text font-weight-bold">PAGES</div>
                     <ul class="nav nav-pills">
                         <li class="nav-item" th:each="i : ${#numbers.sequence(0,data.totalPages)}">
                             <a th:href="@{/app/acessos(page=${i})}" th:text="${i}" class="nav-link"
@@ -55,6 +57,7 @@
                     </ul>
                 </div>
                 <div th:unless="${data.totalPages == 0}">
+                    <div class="text font-weight-bold">PAGES</div>
                     <ul class="nav nav-pills">
                         <li class="nav-item" th:each="i : ${#numbers.sequence(0,data.totalPages-1)}">
                             <a th:href="@{/app/acessos(page=${i})}" th:text="${i}" class="nav-link"

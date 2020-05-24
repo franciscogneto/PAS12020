@@ -1,6 +1,8 @@
 package com.example.fingeraccess.controller;
 
 import java.util.Optional;
+
+import com.example.fingeraccess.entidade.Acesso;
 import com.example.fingeraccess.entidade.Cadastro;
 import com.example.fingeraccess.entidade.LeitorBiometrico;
 import com.example.fingeraccess.entidade.Master;
@@ -17,6 +19,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -86,6 +89,16 @@ public class GeralController {
     public Optional<LeitorBiometrico> findOneLeitor(Long id) {
 
         return leitorRep.findById(id);
+    }
+
+    @GetMapping("/detalhesLeitor/{id}")
+    public ModelAndView getLeitorDetalhes(@PathVariable(name = "id") Long id) {
+
+        LeitorBiometrico leitor = leitorRep.findById(id).get();
+        ModelAndView mv = new ModelAndView("detalhesLeitorBiometrico");
+        mv.addObject("leitor", leitor);
+
+        return mv;
     }
 
     /*@GetMapping("/leitores")
@@ -174,6 +187,16 @@ public class GeralController {
         return usuarioRep.findById(id);
     }
 
+    @GetMapping("/detalhesUsuario/{id}")
+    public ModelAndView getUsuarioDetalhes(@PathVariable(name = "id") Long id) {
+
+        Usuario usuario = usuarioRep.findById(id).get();
+        ModelAndView mv = new ModelAndView("detalhesUsuario");
+        mv.addObject("usuario", usuario);
+
+        return mv;
+    }
+
     /*@GetMapping("/usuarios")
     public ModelAndView getUsuarios() {
 
@@ -257,6 +280,16 @@ public class GeralController {
         return cadastroRep.findByIdCadastroAndIdLeitorBiometrico(idCadastro, idLeitorBiometrico);
     }
     
+    @GetMapping("/detalhesCadastro/{idCadastro}/{idLeitorBiometrico}")
+    public ModelAndView getCadastroDetalhes(@PathVariable(name = "idCadastro") Long idCadastro, @PathVariable(name = "idLeitorBiometrico") Long idLeitorBiometrico) {
+
+        Cadastro cadastro = cadastroRep.findByIdCadastroAndIdLeitorBiometrico(idCadastro, idLeitorBiometrico);
+        ModelAndView mv = new ModelAndView("detalhesCadastro");
+        mv.addObject("cadastro", cadastro);
+
+        return mv;
+    }
+
     /*@GetMapping("/cadastros")
     public ModelAndView getCadastros() {
 
@@ -303,6 +336,16 @@ public class GeralController {
         model.addAttribute("currentPage", page);
 
         return "acessosView";
+    }
+
+    @GetMapping("/detalhesAcesso/{num}")
+    public ModelAndView getAcessoDetalhes(@PathVariable(name = "num") Long num) {
+
+        Acesso acesso = acessoRep.findById(num).get();
+        ModelAndView mv = new ModelAndView("detalhesAcesso");
+        mv.addObject("acesso", acesso);
+
+        return mv;
     }
 
     // -------------------- Master ------------------------------------------

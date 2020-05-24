@@ -66,6 +66,7 @@
                                 <td th:text="${usuario.telefone}"></td>
                                 <td th:text="${usuario.celular}"></td>
                                 <td> 
+                                    <a th:href="@{'/app/detalhesUsuario/' + ${usuario.idUsuario}}" class="btn btn-success detBtn">Detalhes</a>
                                     <a th:href="@{findOneUsuario/(id=${usuario.idUsuario})}" class="btn btn-primary eBtn">Edit</a>
                                     <a th:href="@{deleteUsuario/(id=${usuario.idUsuario})}" class="btn btn-danger delBtn">Delete</a>     
                                 </td>
@@ -82,6 +83,7 @@
                     </div>
                     
                     <div th:if="${data.totalPages == 0}">
+                        <div class="text font-weight-bold">PAGES</div>
                         <ul class="nav nav-pills">
                             <li class="nav-item" th:each="i : ${#numbers.sequence(0,data.totalPages)}">
                                 <a th:href="@{/app/usuarios(page=${i})}" th:text="${i}" class="nav-link"
@@ -90,6 +92,7 @@
                         </ul>
                     </div>
                     <div th:unless="${data.totalPages == 0}">
+                        <div class="text font-weight-bold">PAGES</div>
                         <ul class="nav nav-pills">
                             <li class="nav-item" th:each="i : ${#numbers.sequence(0,data.totalPages-1)}">
                                 <a th:href="@{/app/usuarios(page=${i})}" th:text="${i}" class="nav-link"

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.0.min.js" integrity="sha256-xNzN2a4ltkB44Mc/Jz3pT4iU1cmeR0FkXs4pru/JxaQ=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="/styleForm.css"/>
+</head>
+<body>
+
+    <div class="container-fluid content-row">
+        <div class="row justify-content-center">
+        <div class="card">
+            <div class="card-block">
+                <div class="text-xl-center font-weight-bold">USUÁRIO</div>
+                <br>
+                <table class="table table-hover text-center">
+                    <thead>
+                        <tr>
+                            <th class="text-center">ID</th>
+                            <th class="text-center">NOME</th>
+                            <th class="text-center">CPF</th>
+                            <th class="text-center">DATA DE NASCIMENTO</th>
+                            <th class="text-center">CIDADE</th>
+                            <th class="text-center">ENDEREÇO</th>
+                            <th class="text-center">EMAIL</th>
+                            <th class="text-center">TELEFONE</th>
+                            <th class="text-center">CELULAR</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td th:text="${usuario.idUsuario}"></td>
+                            <td class="text-truncate" style="max-width: 250px;" th:text="${usuario.nome}"></td>
+                            <td th:text="${usuario.cpf}"></td>
+                            <td th:text="${usuario.datanasc}"></td>
+                            <td th:text="${usuario.cidade}"></td>
+                            <td class="text-truncate" style="max-width: 180px;" th:text="${usuario.endereco}"></td>
+                            <td class="text-truncate" style="max-width: 250px;" th:text="${usuario.email}"></td>
+                            <td th:text="${usuario.telefone}"></td>
+                            <td th:text="${usuario.celular}"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            
+                <br>
+                <br>
+                <div class="text-xl-center font-weight-bold">PERMISSÕES DE ACESSO</div>
+                <br>
+
+                <table class="table table-hover text-center">
+                    <thead>
+                        <tr>
+                            <th class="text-center">ID</th>
+                            <th class="text-center">ID LEITOR</th>
+                            <th class="text-center">LOCAL LEITOR</th>
+                            <th class="text-center">ID USUÁRIO</th>
+                            <th class="text-center">NOME USUÁRIO</th>
+                            <th class="text-center">DATA</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="cadastro : ${usuario.cadastros}">
+                            <td th:text="${cadastro.idCadastro}"></td>
+                            <td th:text="${cadastro.leitorBiometrico.idLeitor}"></td>
+                            <td class="text-truncate" style="max-width: 100px;" th:text="${cadastro.leitorBiometrico.local}"></td>
+                            <td th:text="${cadastro.usuario.idUsuario}"></td>
+                            <td class="text-truncate" style="max-width: 250px;" th:text="${cadastro.usuario.nome}"></td>
+                            <td th:text="${cadastro.dataCadastro}"></td>
+                            <td> <a th:href="@{'/app/detalhesCadastro/' + ${cadastro.idCadastro} + '/' + ${cadastro.idLeitorBiometrico}}" class="btn btn-primary detBtn">Detalhes</a> </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <br>
+                <br>
+                <div class="text-xl-center font-weight-bold">HISTÓRICO DE ACESSOS</div>
+                <br>
+
+                <table class="table table-hover text-center">
+                    <thead>
+                        <tr>
+                            <th class="text-center">NÚMERO</th>
+                            <th class="text-center">ID LEITOR</th>
+                            <th class="text-center">LOCAL LEITOR</th>
+                            <th class="text-center">ID USUÁRIO</th>
+                            <th class="text-center">NOME USUÁRIO</th>
+                            <th class="text-center">DATA DO ACESSO</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="acesso : ${usuario.acessos}">
+                            <td th:text="${acesso.numAcesso}"></td>
+                            <td th:text="${acesso.leitorBiometrico.idLeitor}"></td>
+                            <td class="text-truncate" style="max-width: 100px;" th:text="${acesso.leitorBiometrico.local}"></td>
+                            <td th:text="${acesso.usuario.idUsuario}"></td>
+                            <td class="text-truncate" style="max-width: 250px;" th:text="${acesso.usuario.nome}"></td>
+                            <td th:text="${acesso.dataAcesso}"></td>
+                            <td> <a th:href="@{'/app/detalhesAcesso/' + ${acesso.numAcesso}}" class="btn btn-primary detBtn">Detalhes</a> </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <hr/>
+                <div class="col text-center">
+                    <a th:href="@{/app/menu}" method="post" class="btn btn-danger rBtn" role="button">Menu</a>
+                    <a th:href="@{/app/usuarios}" method="post" class="btn btn-danger rBtn" role="button">Return</a>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    
+</body>
+</html>
