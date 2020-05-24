@@ -2,7 +2,6 @@ package com.example.fingeraccess.controller;
 
 import java.util.Optional;
 import com.example.fingeraccess.entidade.Cadastro;
-import com.example.fingeraccess.entidade.IdCadastro;
 import com.example.fingeraccess.entidade.LeitorBiometrico;
 import com.example.fingeraccess.entidade.Master;
 import com.example.fingeraccess.entidade.Usuario;
@@ -23,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
 @RequestMapping("/app")
@@ -52,20 +52,32 @@ public class GeralController {
     }
 
     @PostMapping("/saveLeitor")
-    public String saveLeitor(LeitorBiometrico leitor) {
+    public String saveLeitor(RedirectAttributes redirAttr, LeitorBiometrico leitor) {
 
-        service.addLeitorBiometrico(leitor);
-
+        if(!leitor.getLocal().trim().isEmpty() && !leitor.getFabricante().trim().isEmpty() && !leitor.getSenha().trim().isEmpty() && leitor.getCapacidade() > 0)
+        {
+            service.addLeitorBiometrico(leitor);
+        }
+        else
+        {
+            redirAttr.addFlashAttribute("verifyEdit", true);
+        }
+       
         return "redirect:/app/leitores";
     }
 
     @GetMapping("/deleteLeitor")
-    public String deleteLeitor(Long id) {
+    public String deleteLeitor(RedirectAttributes redirAttr, Long id) {
 
-        // service.deleteLeitorBiometrico(id);
-
-        leitorRep.deleteById(id);
-
+        if(leitorRep.findById(id).get().getCadastros().isEmpty() && leitorRep.findById(id).get().getAcessos().isEmpty())
+        {
+            leitorRep.deleteById(id);
+        }
+        else
+        {
+            redirAttr.addFlashAttribute("verifyDelete", true);
+        }
+       
         return "redirect:/app/leitores";
     }
 
@@ -125,18 +137,33 @@ public class GeralController {
     }
 
     @PostMapping("/saveUsuario")
-    public String saveUsuario(Usuario usuario) {
+    public String saveUsuario(RedirectAttributes redirAttr, Usuario usuario) {
 
-        service.addUsuario(usuario);
+        if(!usuario.getNome().trim().isEmpty() && !usuario.getCpf().trim().isEmpty() && !usuario.getDatanasc().trim().isEmpty() &&
+        !usuario.getCidade().trim().isEmpty() && !usuario.getEndereco().trim().isEmpty() && !usuario.getEmail().trim().isEmpty() &&
+        !usuario.getTelefone().trim().isEmpty() && !usuario.getCelular().trim().isEmpty()){
+            service.addUsuario(usuario);
+        }
+        else
+        {
+            redirAttr.addFlashAttribute("verifyEdit", true);
+        }
 
         return "redirect:/app/usuarios";
     }
 
     @GetMapping("/deleteUsuario")
-    public String deleteUsuario(Long id) {
+    public String deleteUsuario(RedirectAttributes redirAttr, Long id) {
 
-        usuarioRep.deleteById(id);
-
+        if(usuarioRep.findById(id).get().getCadastros().isEmpty() && usuarioRep.findById(id).get().getAcessos().isEmpty())
+        {
+            usuarioRep.deleteById(id);
+        }
+        else
+        {
+            redirAttr.addFlashAttribute("verifyDelete", true);
+        }
+    
         return "redirect:/app/usuarios";
     }
 
@@ -202,17 +229,24 @@ public class GeralController {
     }
 
     @PostMapping("/saveCadastro")
-    public String saveCadastro(Cadastro cadastro) {
+    public String saveCadastro(RedirectAttributes redirAttr, Cadastro cadastro) {
 
-        service.addCadastro(cadastro);
+        if(cadastro.getIdCadastro() > 0 && !cadastro.getDataCadastro().trim().isEmpty())
+        {
+            service.addCadastro(cadastro);
+        }
+        else
+        {
+            redirAttr.addFlashAttribute("verifyEdit", true);
+        }
 
         return "redirect:/app/cadastros";
     }
 
     @GetMapping("/deleteCadastro")
-    public String deleteCadastro(IdCadastro idCadastro) {
+    public String deleteCadastro(Long idCadastro, Long idLeitorBiometrico) {
 
-        cadastroRep.deleteById(idCadastro);
+        cadastroRep.delete(cadastroRep.findByIdCadastroAndIdLeitorBiometrico(idCadastro, idLeitorBiometrico));
 
         return "redirect:/app/cadastros";
     }

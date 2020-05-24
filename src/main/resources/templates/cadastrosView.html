@@ -15,6 +15,20 @@
     <div class="container">
         <div class="card">
             <div class="card-block">
+                <div th:if="${verifyEdit}">
+                    <!-- Edit Error Alert -->
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Erro!</strong> Permissão de Acesso não pôde ser cadastrada/editada.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+
+                <br>
+                <h1 class="text-xl-center font-weight-bold">PERMISSÕES DE ACESSO</h1>
+                <br>
+
                 <table class="table table-hover text-center">
                     <thead>
                         <tr>
@@ -36,7 +50,7 @@
                             <td th:text="${cadastro.dataCadastro}"></td>
                             <td> 
                                 <a th:href="@{findOneCadastro/(idCadastro=${cadastro.idCadastro}, idLeitorBiometrico=${cadastro.idLeitorBiometrico})}" class="btn btn-primary eBtn">Edit</a>
-                                <a th:href="@{deleteCadastro/(id=${cadastro.idCadastro})}" class="btn btn-danger delBtn">Delete</a>     
+                                <a th:href="@{deleteCadastro/(idCadastro=${cadastro.idCadastro}, idLeitorBiometrico=${cadastro.idLeitorBiometrico})}" class="btn btn-danger delBtn">Delete</a>     
                             </td>
                         </tr>
 
@@ -81,7 +95,7 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label for="idCadastro" class="col-form-label">ID Permissão:</label>
-                                <input type="text" class="form-control" id="idCadastro" name="idCadastro" value="" />
+                                <input type="number" class="form-control" id="idCadastro" name="idCadastro" value="" required/>
                             </div>
                             <div class="form-group">
                                 <label for="leitorBiometrico" class="col-form-label">Leitor:</label>
@@ -107,7 +121,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="dataCadastro" class="col-form-label">Data da Permissão:</label>
-                                <input type="text" class="form-control" id="dataCadastro" name="dataCadastro" value="" />
+                                <input type="text" class="form-control" id="dataCadastro" name="dataCadastro" value="" required/>
                             </div>
                         </div>
                         <div class="modal-footer">
