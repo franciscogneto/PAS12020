@@ -2,6 +2,7 @@ package com.example.fingeraccess.entidade;
 
 import java.io.Serializable;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,7 +19,9 @@ public class Master implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+    @Column(name = "usuario",nullable = false, unique = true)
     private String usuario;
+    @Column(name = "password",nullable = false, unique = false)
     private String password;
 
     public Master() {
